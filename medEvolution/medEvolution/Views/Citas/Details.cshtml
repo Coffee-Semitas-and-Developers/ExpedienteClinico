@@ -1,0 +1,58 @@
+﻿@model MedEvolution.Models.App.Cita
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.NombreEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.NombreEstado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.Dui)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.Dui)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Causa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Causa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCita }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

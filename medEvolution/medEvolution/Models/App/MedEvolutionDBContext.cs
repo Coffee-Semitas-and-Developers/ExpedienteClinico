@@ -30,7 +30,7 @@ namespace MedEvolution.Models.App
         public DbSet<Examen> Examen { get; set; }
         public DbSet<OrdenExamen> OrdenExamen { get; set; }
         public DbSet<Cita> Cita { get; set; }
-        //public DbSet<Consulta> Consulta { get; set; }
+        public DbSet<Consulta> Consulta { get; set; }
 
 
 
