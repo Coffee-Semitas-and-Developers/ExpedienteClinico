@@ -12,12 +12,15 @@ namespace MedEvolution.Models.App
     public class OrdenExamen
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DisplayName("Id Orden de Examenes:")]
         public int IdOrden { get; set; }
 
         [Required]
         [DisplayName("Urgencia:")]
         public bool Urgencia { get; set; }
 
+        [DataType(DataType.Upload)]
         [DisplayName("Resultado:")]
         public byte? Resultado { get; set; }
 
@@ -25,7 +28,11 @@ namespace MedEvolution.Models.App
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy} {0:HH:mm:ss}")]
         public DateTime? FechaResultado { get; set; }
 
-        //public virtual Consulta Consulta { get; set; }
+        [Required]
+        [Column("Consulta_IdConsulta")]
+        [DisplayName("Id Consulta:")]
+        public int IdConsulta { get; set; }
+        public virtual Consulta Consulta { get; set; }
 
         public virtual ICollection<DetalleExamenes> Examenes { get; set; }
 

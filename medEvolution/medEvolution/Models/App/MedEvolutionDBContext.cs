@@ -29,14 +29,50 @@ namespace MedEvolution.Models.App
         public DbSet<DetalleExamenes> DetalleExamenes { get; set; }
         public DbSet<Examen> Examen { get; set; }
         public DbSet<OrdenExamen> OrdenExamen { get; set; }
-        /*public DbSet<Cita> Cita { get; set; }
-        public DbSet<Consulta> Consulta { get; set; }*/
+        public DbSet<Cita> Cita { get; set; }
+        //public DbSet<Consulta> Consulta { get; set; }
 
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+           modelBuilder.Entity<Consulta>()
+            .HasMany(e => e.OrdenesExamen)
+            .WithRequired(e => e.Consulta)
+            .HasForeignKey(e => e.IdConsulta)
+            .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Consulta>()
+            .HasMany(e => e.Recetas)
+            .WithRequired(e => e.Consulta)
+            .HasForeignKey(e => e.IdConsulta)
+            .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Consulta>()
+                .HasRequired(e => e.Cita);
+
+            modelBuilder.Entity<Consulta>()
+                .HasRequired(e => e.Signos);
+
+            modelBuilder.Entity<Cita>()
+                .HasRequired(e => e.Paciente)
+                .WithMany(e=>e.Citas)
+                .HasForeignKey(e=>e.IdPaciente)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Cita>()
+                .HasRequired(e => e.Medico)
+                .WithMany(e => e.Citas)
+                .HasForeignKey(e => e.IdEmpleado)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Cita>()
+                .HasRequired(e => e.Estado)
+                .WithMany(e => e.Citas)
+                .HasForeignKey(e => e.CodigoEstado)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DetalleExamenes>()
                  .HasRequired(e => e.Examen).WithMany().HasForeignKey(e => e.CodigoExamen);

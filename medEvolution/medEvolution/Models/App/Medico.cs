@@ -31,5 +31,7 @@ namespace MedEvolution.Models.App
         public int CodigoHorario { get; set; }
         public virtual Horario_De_Atencion Horario_De_Atencion { get; set; }
 
+        public virtual ICollection<Cita> Citas { get; set; }
+
     }
 }

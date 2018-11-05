@@ -17,38 +17,47 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
-        [Description("Identificador de consulta:")]
+        [DisplayName("Identificador de consulta:")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdConsulta { get; set; }
 
         [Required]
         [StringLength(254)]
-        [Description("Sintomatología:")]
+        [DisplayName("Sintomatología:")]
         public string Sintomatología { get; set; }
 
         [Required]
         [StringLength(254)]
-        [Description("Diagnóstico:")]
+        [DisplayName("Diagnóstico:")]
         public string Diagnostico { get; set; }
 
         [Required]
         [StringLength(254)]
-        [Description("Tratamiento:")]
+        [DisplayName("Tratamiento:")]
         public string Tratamiento { get; set; }
 
         [Required]
+        [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm:ss}")]
         public DateTime HoraConsulta { get; set; }
 
         [StringLength(254)]
-        [Description("Procedimiento de la enfermera:")]
+        [DisplayName("Procedimiento de la enfermera:")]
         public string ProcedimientoEnfermera { get; set; }
 
-        public Cita Cita { get; set; }
+        [Required]
+        [Column("Cita_IdCita")]
+        [DisplayName("Cita:")]
+        public int IdCita { get; set; }
+        public virtual Cita Cita { get; set; }
 
-        public ConjuntoSignosVitales Signos { get; set; }
+        [Required]
+        [Column("ConjuntoSignosVitales_IdSignos")]
+        [DisplayName("Signos:")]
+        public int IdSignos { get; set; }
+        public virtual ConjuntoSignosVitales Signos { get; set; }
 
-        public List<OrdenExamen> OrdenesExamen { get; set; }
-
-        public List<Receta> Recetas { get; set; }
+        public virtual ICollection<OrdenExamen> OrdenesExamen { get; set; }
+        public virtual ICollection<Receta> Recetas { get; set; }
     }
 }

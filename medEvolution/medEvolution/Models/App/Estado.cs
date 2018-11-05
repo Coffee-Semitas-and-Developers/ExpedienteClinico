@@ -26,7 +26,7 @@ namespace MedEvolution.Models.App
         [DisplayName("Estado:")]
         public string NombreEstado { get; set; }
 
-        //public virtual ICollection<Cita> Citas { get; set;}
+        public virtual ICollection<Cita> Citas { get; set;}
         public virtual ICollection<Paciente> Pacientes { get; set; }
         public virtual ICollection<Empleado> Empleados { get; set; }
     }

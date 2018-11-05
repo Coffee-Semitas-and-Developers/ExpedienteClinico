@@ -18,7 +18,8 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
-        [Description("Identificador de cita:")]
+        [DisplayName("Identificador de cita:")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCita { get; set; }
        
         [Required]
@@ -28,22 +29,34 @@ namespace MedEvolution.Models.App
 
 
         [Required(ErrorMessage ="La Fecha no debe ser inferior a la fecha acutal")]
-        [Description("Fecha de la cita:")]
+        [DisplayName("Fecha de la cita:")]
+        [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString = "{0:dd/MMM/ yyyy}")]
         [Remote("FechaParaCita", "Validaciones", ErrorMessage ="La fecha de la cita no puede ser inferior al día de hoy")]
         public DateTime FechaCita { get; set; }
 
         [Required]
         [StringLength(100)]
-        [Description("Causa:")]
+        [DisplayName("Causa:")]
         public string Causa { get; set; }
 
-        //[Remote("ObteberListadoMedico","FiltrosController")]
-        public Medico Medico { get; set; }
+        [Required]
+        [Column("Medico_IdEmpleado")]
+        [DisplayName("Médico:")]
+        public int IdEmpleado { get; set; }
+        public virtual Medico Medico { get; set; }
 
-        public Paciente Paciente { get; set; }
+        [Required]
+        [Column("Paciente_IdPaciente")]
+        [DisplayName("Paciente:")]
+        public int IdPaciente { get; set; }
+        public virtual Paciente Paciente { get; set; }
 
-        public Estado Estado { get; set; }
+        [Required]
+        [Column("Estado_CodigoEstado")]
+        [DisplayName("Estado:")]
+        public int CodigoEstado { get; set; }
+        public virtual Estado Estado { get; set; }
 
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

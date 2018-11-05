@@ -31,9 +31,11 @@ namespace MedEvolution.Models.App
 
         [Required]
         [Column("Estado_CodigoEstado")]
-        [DisplayName("Estado: ")]
+        [DisplayName("Estado:")]
         public int CodigoEstado { get; set; }
         public virtual Estado Estado { get; set; }
+
+        public virtual ICollection<Cita> Citas { get; set; }
 
     }
 }

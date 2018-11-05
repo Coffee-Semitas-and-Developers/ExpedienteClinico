@@ -232,6 +232,14 @@
     <Compile Include="Migrations\201811050525582_OrdenExamen-Examen-Detalle.Designer.cs">
       <DependentUpon>201811050525582_OrdenExamen-Examen-Detalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811050618052_Cita.cs" />
+    <Compile Include="Migrations\201811050618052_Cita.Designer.cs">
+      <DependentUpon>201811050618052_Cita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050621412_Consulta.cs" />
+    <Compile Include="Migrations\201811050621412_Consulta.Designer.cs">
+      <DependentUpon>201811050621412_Consulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -359,6 +367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811050525582_OrdenExamen-Examen-Detalle.resx">
       <DependentUpon>201811050525582_OrdenExamen-Examen-Detalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050618052_Cita.resx">
+      <DependentUpon>201811050618052_Cita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050621412_Consulta.resx">
+      <DependentUpon>201811050621412_Consulta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
