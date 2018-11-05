@@ -17,17 +17,17 @@ namespace MedEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Description("Código Examen:")]
+        [DisplayName("Código Examen:")]
         public int CodigoExamen { get; set; }
 
         [Required]
         [StringLength(30)]
-        [Description(" Tipo de muestra:")]
+        [DisplayName(" Tipo de muestra:")]
         public string TipoMuestra { get; set; }
 
         [Required]
         [StringLength(30)]
-        [Description("Nombre del examen:")]
+        [DisplayName("Nombre del examen:")]
         public string NombreExamen { get; set; }
     }
 }

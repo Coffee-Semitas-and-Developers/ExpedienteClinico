@@ -15,17 +15,19 @@ namespace MedEvolution.Models.App
         public int IdOrden { get; set; }
 
         [Required]
-        [Description("Urgencia:")]
+        [DisplayName("Urgencia:")]
         public bool Urgencia { get; set; }
 
-        [Description("Resultado:")]
-        public byte Resultado { get; set; }
+        [DisplayName("Resultado:")]
+        public byte? Resultado { get; set; }
 
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy} {0:HH:mm:ss}")]
-        public DateTime FechaResultado { get; set; }
+        public DateTime? FechaResultado { get; set; }
 
-        public  Consulta Consulta { get; set; }
+        //public virtual Consulta Consulta { get; set; }
 
-        public List<Examen> Examen { get; set; }
+        public virtual ICollection<DetalleExamenes> Examenes { get; set; }
+
     }
 }

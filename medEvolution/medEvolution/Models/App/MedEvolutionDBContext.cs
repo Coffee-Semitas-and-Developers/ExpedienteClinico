@@ -24,12 +24,12 @@ namespace MedEvolution.Models.App
         public DbSet<Especialidad_Desempeniada> Especialidad_Desempeniada { get; set; }
         public DbSet<Horario_De_Atencion> Horario_De_Atencion { get; set; }
         public DbSet<Medico> Medico { get; set; }
-        /*public DbSet<Medicamento> Medicamento { get; set; }
+        public DbSet<Medicamento> Medicamento { get; set; }
         public DbSet<Receta> Receta { get; set; }
         public DbSet<DetalleExamenes> DetalleExamenes { get; set; }
         public DbSet<Examen> Examen { get; set; }
         public DbSet<OrdenExamen> OrdenExamen { get; set; }
-        public DbSet<Cita> Cita { get; set; }
+        /*public DbSet<Cita> Cita { get; set; }
         public DbSet<Consulta> Consulta { get; set; }*/
 
 
@@ -38,11 +38,14 @@ namespace MedEvolution.Models.App
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            /* modelBuilder.Entity<DetalleExamenes>()
-                 .HasRequired(e => e.Examen).WithMany().HasForeignKey(e => e.Examen_CodigoExamen);
+            modelBuilder.Entity<DetalleExamenes>()
+                 .HasRequired(e => e.Examen).WithMany().HasForeignKey(e => e.CodigoExamen);
 
              modelBuilder.Entity<DetalleExamenes>()
-                 .HasRequired(e => e.OrdenExamen).WithMany().HasForeignKey(e => e.OrdenExamen_IdOrden);*/
+                 .HasRequired(e => e.OrdenExamen).WithMany(e=>e.Examenes).HasForeignKey(e => e.IdOrden);
+
+            modelBuilder.Entity<Receta>()
+                .HasRequired(e => e.Medicamento);
 
             modelBuilder.Entity<Medico>()
                 .HasRequired(e => e.Especialidad_Desempeniada)

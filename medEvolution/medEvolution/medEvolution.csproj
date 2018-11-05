@@ -224,6 +224,14 @@
     <Compile Include="Migrations\201811050459200_Medico.Designer.cs">
       <DependentUpon>201811050459200_Medico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811050516506_Receta-Medicamento.cs" />
+    <Compile Include="Migrations\201811050516506_Receta-Medicamento.Designer.cs">
+      <DependentUpon>201811050516506_Receta-Medicamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050525582_OrdenExamen-Examen-Detalle.cs" />
+    <Compile Include="Migrations\201811050525582_OrdenExamen-Examen-Detalle.Designer.cs">
+      <DependentUpon>201811050525582_OrdenExamen-Examen-Detalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -345,6 +353,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811050459200_Medico.resx">
       <DependentUpon>201811050459200_Medico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050516506_Receta-Medicamento.resx">
+      <DependentUpon>201811050516506_Receta-Medicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050525582_OrdenExamen-Examen-Detalle.resx">
+      <DependentUpon>201811050525582_OrdenExamen-Examen-Detalle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,12 +17,12 @@ namespace MedEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Description("Código Medicamento:")]
+        [DisplayName("Código Medicamento:")]
         public int CodigoMedicamento { get; set; }
 
         [Required]
         [StringLength(20)]
-        [Description("Nombre Medicamento:")]
+        [DisplayName("Nombre Medicamento:")]
         public string NombreMedicamento { get; set; }
 
     }

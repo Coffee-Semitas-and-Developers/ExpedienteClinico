@@ -18,10 +18,16 @@ using System.Data.Entity.Spatial;
             [Description("Instrucciones:")]  
             [StringLength(254)]
             public string Instrucciones { get; set; }
+            
+            [Required]
+            [Column("Medicamento_CodigoMedicamento")]
+            [DisplayName("Medicamento: ")]
+            public int CodigoMedicamento { get; set; }
+            public virtual Medicamento Medicamento { get; set; }
 
-            public Consulta Consulta { get; set; }
+            //public Consulta Consulta { get; set; }
 
-            public  Medicamento Medicamento { get; set; }
-        }
+
+    }
     }
     
