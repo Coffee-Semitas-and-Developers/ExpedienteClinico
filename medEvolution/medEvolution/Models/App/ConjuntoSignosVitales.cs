@@ -16,26 +16,27 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
+        [ScaffoldColumn(false)]
         public int IdSignos { get; set; }
 
         [Required]
-        [Description("Presión Arterial:")]
+        [DisplayName("Presión Arterial:")]
         public decimal PresionArterial { get; set; }
 
         [Required]
-        [Description("Temperatura:")]
+        [DisplayName("Temperatura:")]
         public decimal Temperatura { get; set; }
 
         [Required]
-        [Description("Peso:")]
+        [DisplayName("Peso:")]
         public decimal Peso { get; set; }
 
         [Required]
-        [Description("Pulso cardiaco:")]
+        [DisplayName("Pulso cardiaco:")]
         public decimal PulsoCardiaco { get; set; }
 
         [Required]
-        [Description("Estatura:")]
+        [DisplayName("Estatura:")]
         public decimal Estatura { get; set; }
 
     }

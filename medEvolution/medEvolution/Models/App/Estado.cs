@@ -13,17 +13,21 @@ namespace MedEvolution.Models.App
     {
         public Estado()
         {
+
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Description("Código Estado:")]
+        [DisplayName("Código Estado:")]
         public int CodigoEstado { get; set; }
 
         [Required]
         [StringLength(20)]
-        [Description("Estado:")]
+        [DisplayName("Estado:")]
         public string NombreEstado { get; set; }
-       
+
+        //public virtual ICollection<Cita> Citas { get; set;}
+        public virtual ICollection<Paciente> Pacientes { get; set; }
+        public virtual ICollection<Empleado> Empleados { get; set; }
     }
 }

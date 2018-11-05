@@ -17,6 +17,7 @@ namespace MedEvolution.Models.App
 
         [Key]
         [Description("Identificador de paciente:")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdPaciente { get; set; }        
 
         [Required]
@@ -28,7 +29,11 @@ namespace MedEvolution.Models.App
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy} {0:HH:mm:ss}")]
         public DateTime FechaDeBaja { get; set; }
 
-        public  Estado Estado { get; set; }
+        [Required]
+        [Column("Estado_CodigoEstado")]
+        [DisplayName("Estado: ")]
+        public int CodigoEstado { get; set; }
+        public virtual Estado Estado { get; set; }
 
     }
 }

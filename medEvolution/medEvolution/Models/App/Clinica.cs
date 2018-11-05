@@ -54,7 +54,7 @@ namespace MedEvolution.Models.App
 
         public virtual Direccion Direccion { get; set; }
 
-        //public virtual ICollection<Empleado> Empleados { get; set; }
+        public virtual ICollection<Empleado> Empleados { get; set; }
 
     }
 }

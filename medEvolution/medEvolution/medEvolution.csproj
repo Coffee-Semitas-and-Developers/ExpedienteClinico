@@ -208,6 +208,14 @@
     <Compile Include="Migrations\201811042315491_Clinica.Designer.cs">
       <DependentUpon>201811042315491_Clinica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811050345243_Estado-ConjuntoSignos.cs" />
+    <Compile Include="Migrations\201811050345243_Estado-ConjuntoSignos.Designer.cs">
+      <DependentUpon>201811050345243_Estado-ConjuntoSignos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050417118_Persona-Paciente-Empleado.cs" />
+    <Compile Include="Migrations\201811050417118_Persona-Paciente-Empleado.Designer.cs">
+      <DependentUpon>201811050417118_Persona-Paciente-Empleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -317,6 +325,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811042315491_Clinica.resx">
       <DependentUpon>201811042315491_Clinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050345243_Estado-ConjuntoSignos.resx">
+      <DependentUpon>201811050345243_Estado-ConjuntoSignos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050417118_Persona-Paciente-Empleado.resx">
+      <DependentUpon>201811050417118_Persona-Paciente-Empleado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

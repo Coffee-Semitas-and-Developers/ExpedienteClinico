@@ -9,7 +9,7 @@ using System.Web;
 namespace MedEvolution.Models.App
 {
     [Table("Medico")]
-    public class Medico: Empleado
+    public class Medico
     {
         public Medico()
         {

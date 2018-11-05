@@ -43,11 +43,19 @@ namespace MedEvolution.Models.App
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public DateTime HorasLaborales { get; set; }
+        public string HorasLaborales { get; set; }
 
-        public Clinica Clinica { get; set; }
+        [Required]
+        [Column("Clinica_IdClinica")]
+        [DisplayName("Clinica: ")]
+        public int IdClinica { get; set; }
+        public virtual Clinica Clinica { get; set; }
 
-        public Estado Estado { get; set; }
+        [Required]
+        [Column("Estado_CodigoEstado")]
+        [DisplayName("Estado: ")]
+        public int CodigoEstado { get; set; }
+        public virtual Estado Estado { get; set; }
 
     }
 }

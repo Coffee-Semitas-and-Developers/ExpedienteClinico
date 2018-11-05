@@ -23,122 +23,133 @@ namespace MedEvolution.Models.App
 
         [Required]
         [StringLength(15)]
-        [Description("Primer Nombre:")]
+        [DisplayName("Primer Nombre:")]
         public string Nombre1 { get; set; }
 
         [StringLength(15)]
-        [Description("Segundo Nombre:")]
+        [DisplayName("Segundo Nombre:")]
         public string Nombre2 { get; set; }
 
         [Required]
         [StringLength(15)]
-        [Description("Apellido paterno:")]
+        [DisplayName("Apellido paterno:")]
         public string Apellido1 { get; set; }
 
         [StringLength(15)]
-        [Description("Apellido materno:")]
+        [DisplayName("Apellido materno:")]
         public string Apellido2 { get; set; }
 
         [Required]
         [StringLength(9)]
-        [Description("Télefono:")]
+        [DisplayName("Télefono:")]
         public string Telefono { get; set; }
 
         [Required]
         [StringLength(9)]
-        [Description("Celular:")]
+        [DisplayName("Celular:")]
         public string Celular { get; set; }
 
         [StringLength(10)]
-        [Description("Tipo de sangre:")]
+        [DisplayName("Tipo de sangre:")]
         public string TipoSangre { get; set; }
 
         [Required]
-        [Description("Fecha de nacimiento:")]
+        [DisplayName("Fecha de nacimiento:")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd:MMM:yyyy}")]
         public DateTime FechaNac { get; set; }
 
         [Required]
         [StringLength(10)]
-        [Description("Sexo:")]
+        [DisplayName("Sexo:")]
         public string Sexo { get; set; }
 
         [Required]
         [StringLength(30)]
-        [Description("Ocupación:")]
+        [DisplayName("Ocupación:")]
         public string Ocupacion { get; set; }
 
         [Required]
         [EmailAddress]
-        [Description("Correo electrónico:")]
+        [DisplayName("Correo electrónico:")]
         public string CorreoElectronico { get; set; }
 
         [Required]
         [StringLength(50)]
-        [Description("Alergia:")]
+        [DisplayName("Alergia:")]
         public string Alergia { get; set; }
 
-        [Description("Posee Discapacidad:")]
+        [DisplayName("Posee Discapacidad:")]
         public bool Discapacidad { get; set; }
 
         [StringLength(254)]
-        [Description("Discapacidades:")]
+        [DisplayName("Discapacidades:")]
         public string TipoDiscapacidad { get; set; }
 
         [StringLength(15)]
-        [Description("Nombre de la madre:")]
+        [DisplayName("Nombre de la madre:")]
         public string NombreMadre { get; set; }
 
         [StringLength(15)]
-        [Description("Apellido de la madre:")]
+        [DisplayName("Apellido de la madre:")]
         public string ApellidoMadre { get; set; }
 
         [StringLength(15)]
-        [Description("Nombre del padre:")]
+        [DisplayName("Nombre del padre:")]
         public string NombrePadre { get; set; }
 
         [StringLength(15)]
-        [Description("Apellido del padre:")]
+        [DisplayName("Apellido del padre:")]
         public string ApellidoPadre { get; set; }
 
         [Required]
         [StringLength(20)]
-        [Description("Estado civil:")]
+        [DisplayName("Estado civil:")]
         public string EstadoCivil { get; set; }
 
         [StringLength(15)]
-        [Description("Nombre del conyugue:")]
+        [DisplayName("Nombre del conyugue:")]
         public string NombreConyugue { get; set; }
 
         [StringLength(15)]
-        [Description("Apellido del conyugue:")]
+        [DisplayName("Apellido del conyugue:")]
         public string ApellidoConyugue { get; set; }
 
         [Required]
         [StringLength(15)]
-        [Description("Nombre contacto de emergencia:")]
+        [DisplayName("Nombre contacto de emergencia:")]
         public string NombreContactoEmergencia { get; set; }
 
         [Required]
         [StringLength(15)]
-        [Description("Apellido contacto de emergencia:")]
+        [DisplayName("Apellido contacto de emergencia:")]
         public string ApellidoContactoEmergencia { get; set; }
 
         [Required]
         [StringLength(9)]
-        [Description("Teléfono contacto de emergencia:")]
+        [DisplayName("Teléfono contacto de emergencia:")]
         public string TelefonoContactoEmergencia { get; set; }
 
         [Required]
         [StringLength(9)]
-        [Description("Celular contacto de emergencia:")]
+        [DisplayName("Celular contacto de emergencia:")]
         public string CelularContactoEmergencia { get; set; }
 
+        [Required]
+        [Column("Direccion_Colonia")]
+        [DisplayName("Colonia, Barrio, Residencial o Comunidad:")]
+        public string Colonia { get; set; }
 
-        /*public string Direccion_Colonia { get; set; }
-        public string Direccion_Pasaje_Calle { get; set; }
-        public string Direccion_Casa { get; set; }*/
+        [Required]
+        [Column("Direccion_Pasaje_Calle")]
+        [DisplayName("Pasaje, Calle o Bloque:")]
+        public string Pasaje_Calle { get; set; }
+
+        [Required]
+        [Column("Direccion_Casa")]
+        [DisplayName("Número de casa:")]
+        public string Casa { get; set; }
+
         public virtual Direccion Direccion { get; set; }
 
         [NotMapped]
