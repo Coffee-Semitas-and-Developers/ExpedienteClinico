@@ -9,19 +9,27 @@ using System.Web;
 namespace MedEvolution.Models.App
 {
     [Table("Medico")]
-    public class Medico
+    public class Medico: Empleado
     {
         public Medico()
         {
         }
 
         [Key]
-        [Description("JVPM:")]
+        [DisplayName("JVPM:")]
         public int Jvpm { get; set; }
 
-        public  Especialidad_Desempeniada Especialidad_Desempeniada { get; set; }
+        [Required]
+        [Column("Especialidad_Desempeniada_CodigoEspecialidad")]
+        [DisplayName("Especialidad:")]
+        public int CodigoEspecialidad { get; set; }
+        public virtual Especialidad_Desempeniada Especialidad_Desempeniada { get; set; }
 
-        public  Horario_De_Atencion Horarios_De_Atencion { get; set; }
+        [Required]
+        [Column("Horario_De_Atencion_CodigoHorario")]
+        [DisplayName("Horario de Atención")]
+        public int CodigoHorario { get; set; }
+        public virtual Horario_De_Atencion Horario_De_Atencion { get; set; }
 
     }
 }

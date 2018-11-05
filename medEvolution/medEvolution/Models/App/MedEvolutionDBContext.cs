@@ -21,15 +21,16 @@ namespace MedEvolution.Models.App
         public DbSet<ConjuntoSignosVitales> ConjuntoSignosVitales { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<Empleado> Empleado { get; set; }
-        /*public DbSet<Medicamento> Medicamento { get; set; }
-        public DbSet<Medico> Medico { get; set; }
-        public DbSet<Examen> Examen { get; set; }
         public DbSet<Especialidad_Desempeniada> Especialidad_Desempeniada { get; set; }
         public DbSet<Horario_De_Atencion> Horario_De_Atencion { get; set; }
-        public DbSet<Cita> Cita { get; set; }
-        public DbSet<Consulta> Consulta { get; set; }
+        public DbSet<Medico> Medico { get; set; }
+        /*public DbSet<Medicamento> Medicamento { get; set; }
+        public DbSet<Receta> Receta { get; set; }
+        public DbSet<DetalleExamenes> DetalleExamenes { get; set; }
+        public DbSet<Examen> Examen { get; set; }
         public DbSet<OrdenExamen> OrdenExamen { get; set; }
-        public DbSet<Receta> Receta { get; set; }*/
+        public DbSet<Cita> Cita { get; set; }
+        public DbSet<Consulta> Consulta { get; set; }*/
 
 
 
@@ -41,16 +42,19 @@ namespace MedEvolution.Models.App
                  .HasRequired(e => e.Examen).WithMany().HasForeignKey(e => e.Examen_CodigoExamen);
 
              modelBuilder.Entity<DetalleExamenes>()
-                 .HasRequired(e => e.OrdenExamen).WithMany().HasForeignKey(e => e.OrdenExamen_IdOrden);
+                 .HasRequired(e => e.OrdenExamen).WithMany().HasForeignKey(e => e.OrdenExamen_IdOrden);*/
 
-             modelBuilder.Entity<Empleado>()
-                 .Map(e => { e.MapInheritedProperties(); e.ToTable("Empleado"); })
-                 .HasKey(e => e.IdEmpleado);
+            modelBuilder.Entity<Medico>()
+                .HasRequired(e => e.Especialidad_Desempeniada)
+                .WithMany(e => e.Medicos)
+                .HasForeignKey(e => e.CodigoEspecialidad)
+                .WillCascadeOnDelete(false);
 
-             modelBuilder.Entity<Paciente>()
-                 .Map(e => { e.MapInheritedProperties(); e.ToTable("Paciente"); })
-                 .HasKey(e => e.IdPaciente);
-                 */
+            modelBuilder.Entity<Medico>()
+                .HasRequired(e => e.Horario_De_Atencion)
+                .WithMany(e => e.Medicos)
+                .HasForeignKey(e => e.CodigoHorario)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Empleado>()
                  .Map(e => { e.MapInheritedProperties(); e.ToTable("Empleado"); })

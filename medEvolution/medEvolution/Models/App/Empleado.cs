@@ -57,5 +57,7 @@ namespace MedEvolution.Models.App
         public int CodigoEstado { get; set; }
         public virtual Estado Estado { get; set; }
 
+        //public virtual ICollection<Medico> Medicos { get; set; }
+
     }
 }

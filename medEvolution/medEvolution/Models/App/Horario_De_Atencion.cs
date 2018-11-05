@@ -18,11 +18,11 @@ namespace MedEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Description("Código Horario:")]
+        [DisplayName("Código Horario:")]
         public int CodigoHorario { get; set; }
 
         [Required]
-        [Description("Hora de entrada:")]
+        [DisplayName("Hora de entrada:")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime HoraInicio { get; set; }
@@ -30,19 +30,22 @@ namespace MedEvolution.Models.App
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        [Description("Hora Salida:")]
+        [DisplayName("Hora Salida:")]
         public DateTime HoraFin { get; set; }
 
         [Required]
-        [Description("Cantidad de consultas a brindar:")]
+        [DisplayName("Cantidad de consultas a brindar:")]
         public int NumeroCitasAtender { get; set; }
 
-        [Description("Horarios")]
+        [NotMapped]
+        [DisplayName("Horarios:")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public List<DateTime> Horarios { get; set; }
+        public List<string> Horarios { get; set; }
 
-        public List<DateTime> CrearHorario(DateTime inicio, DateTime fin)
+        public virtual ICollection<Medico> Medicos { get; set; }
+
+        /*public List<DateTime> CrearHorario(DateTime inicio, DateTime fin)
         {
            List<DateTime> horarios = new List<DateTime>();
            double tiempoPorCita = 30;
@@ -54,7 +57,7 @@ namespace MedEvolution.Models.App
             }
            
            return Horarios;
-        }
+        }*/
 
     }
 }

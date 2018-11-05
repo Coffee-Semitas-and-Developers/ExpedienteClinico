@@ -216,6 +216,14 @@
     <Compile Include="Migrations\201811050417118_Persona-Paciente-Empleado.Designer.cs">
       <DependentUpon>201811050417118_Persona-Paciente-Empleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811050441151_Especialidad-Horario.cs" />
+    <Compile Include="Migrations\201811050441151_Especialidad-Horario.Designer.cs">
+      <DependentUpon>201811050441151_Especialidad-Horario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050459200_Medico.cs" />
+    <Compile Include="Migrations\201811050459200_Medico.Designer.cs">
+      <DependentUpon>201811050459200_Medico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -331,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811050417118_Persona-Paciente-Empleado.resx">
       <DependentUpon>201811050417118_Persona-Paciente-Empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050441151_Especialidad-Horario.resx">
+      <DependentUpon>201811050441151_Especialidad-Horario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050459200_Medico.resx">
+      <DependentUpon>201811050459200_Medico.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
