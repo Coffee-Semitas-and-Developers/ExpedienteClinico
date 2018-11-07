@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using medEvolution.Services;
 using MedEvolution.Models.App;
 
 namespace medEvolution.Controllers
@@ -13,27 +14,33 @@ namespace medEvolution.Controllers
     public class DireccionesController : Controller
     {
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
+        //instancia del servicio direccion para ser usada
+        private ServiciosDireccion Direccion = new ServiciosDireccion();
 
         // GET: Direcciones
         public ActionResult Index()
         {
-            var direccion = db.Direccion.Include(d => d.Municipio);
-            return View(direccion.ToList());
+            //var direccion = db.Direccion.Include(d => d.Municipio);
+            //return View(direccion.ToList());
+            return View(Direccion.ToList());
         }
 
         // GET: Direcciones/Details/5
         public ActionResult Details(string IdColonia, string IdPasaje, string IdCasa)
         {
             if (IdColonia == null || IdPasaje == null || IdCasa == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Direccion direccion = db.Direccion.Find(IdColonia, IdPasaje, IdCasa);
-            if (direccion == null)
-            {
-                return HttpNotFound();
-            }
-            return View(direccion);
+             {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             Direccion direccion = db.Direccion.Find(IdColonia, IdPasaje, IdCasa);
+             if (direccion == null)
+             {
+                 return HttpNotFound();
+             }
+             return View(direccion);
+             
+            //var other = new ServiciosDireccion();
+            //other.Detalles(IdColonia, IdPasaje, IdCasa);
         }
 
         // GET: Direcciones/Create
