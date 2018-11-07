@@ -34,7 +34,6 @@ namespace MedEvolution.Models.App
         [Description("Casa:")]
         public string Casa { get; set; }
 
-        [Required]
         [StringLength(50)]
         [Description("Detalle:")]
         public string Detalle { get; set; }

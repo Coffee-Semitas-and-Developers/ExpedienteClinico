@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace MedEvolution.Models.App
 {
     [Table("Cita")]
-    public class Cita : IValidatableObject
+    public class Cita
     {
         public Cita()
         {
@@ -18,18 +18,19 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
-        [DisplayName("Identificador de cita:")]
+        [DisplayName("Identificador de cita")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCita { get; set; }
        
         [Required]
         [ScaffoldColumn(false)]
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy 0:HH:mm:ss}")]
         public DateTime FechaCreada { get; set; }
 
 
         [Required(ErrorMessage ="La Fecha no debe ser inferior a la fecha acutal")]
-        [DisplayName("Fecha de la cita:")]
+        [DisplayName("Fecha de la cita")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString = "{0:dd/MMM/ yyyy}")]
         [Remote("FechaParaCita", "Validaciones", ErrorMessage ="La fecha de la cita no puede ser inferior al día de hoy")]
@@ -57,18 +58,5 @@ namespace MedEvolution.Models.App
         [DisplayName("Estado:")]
         public int CodigoEstado { get; set; }
         public virtual Estado Estado { get; set; }
-
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            var errores = new List<ValidationResult>();
-
-           if (FechaCita < DateTime.Today)
-            {
-                errores.Add(new ValidationResult("La fecha programada para la cita no debe ser inferior a la fecha actual", new string[] { "FechaCita" }));
-            }
-
-            return errores;
-        }
     }
 }

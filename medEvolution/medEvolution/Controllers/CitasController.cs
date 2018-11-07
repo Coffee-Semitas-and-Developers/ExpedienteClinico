@@ -7,18 +7,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MedEvolution.Models.App;
+using MedEvolution.Services;
 
 namespace medEvolution.Controllers
 {
     public class CitasController : Controller
     {
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
+        private ServiciosCita Cita = new ServiciosCita();
 
         // GET: Citas
         public ActionResult Index()
         {
-            var cita = db.Cita.Include(c => c.Estado).Include(c => c.Medico).Include(c => c.Paciente);
-            return View(cita.ToList());
+            //var cita = db.Cita.Include(c => c.Estado).Include(c => c.Medico).Include(c => c.Paciente);
+            //return View(cita.ToList());
+            return View(Cita.ToList());
+
         }
 
         // GET: Citas/Details/5
