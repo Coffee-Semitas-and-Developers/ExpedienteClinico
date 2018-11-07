@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MedEvolution.Models.App.Direccion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Municipio.NombreMun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Municipio.NombreMun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Detalle)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { IdColonia = item.Colonia, IdPasaje = item.Pasaje_Calle, IdCasa = item.Casa }) |
+            @Html.ActionLink("Details", "Details", new { IdColonia = item.Colonia, IdPasaje = item.Pasaje_Calle, IdCasa = item.Casa }) |
+            @Html.ActionLink("Delete", "Delete", new { IdColonia = item.Colonia, IdPasaje = item.Pasaje_Calle, IdCasa = item.Casa })
+        </td>
+    </tr>
+}
+
+</table>
