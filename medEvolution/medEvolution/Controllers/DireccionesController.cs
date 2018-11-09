@@ -1,139 +1,116 @@
-﻿using System;
+﻿using medEvolution.DAL;
+using MedEvolution.Models.App;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using medEvolution.Services;
-using MedEvolution.Models.App;
 
 namespace medEvolution.Controllers
 {
     public class DireccionesController : Controller
     {
+        private IDireccionRepository _direccionRepository;
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
-        //instancia del servicio direccion para ser usada
-        private ServiciosDireccion Direccion = new ServiciosDireccion();
+
+        public DireccionesController()
+        {
+            this._direccionRepository = new DireccionRepository(new MedEvolutionDbContext());
+        }
+
 
         // GET: Direcciones
         public ActionResult Index()
         {
-            //var direccion = db.Direccion.Include(d => d.Municipio);
-            //return View(direccion.ToList());
-            return View(Direccion.ToList());
+            var direcciones = from direccion in _direccionRepository.GetDirecciones()
+                              select direccion;
+            return View(direcciones);
         }
 
-        // GET: Direcciones/Details/5
-        public ActionResult Details(string IdColonia, string IdPasaje, string IdCasa)
+        public ActionResult Details(string ColoniaID, string Pasaje_CalleID, string CasaID)
         {
-            if (IdColonia == null || IdPasaje == null || IdCasa == null)
-             {
-                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-             }
-             Direccion direccion = db.Direccion.Find(IdColonia, IdPasaje, IdCasa);
-             if (direccion == null)
-             {
-                 return HttpNotFound();
-             }
-             return View(direccion);
-             
-            //var other = new ServiciosDireccion();
-            //other.Detalles(IdColonia, IdPasaje, IdCasa);
+            Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
+            return View(direccion);
         }
 
-        // GET: Direcciones/Create
-        public ActionResult Create()
+        public ActionResult Create()//GET
         {
-            ViewBag.CodigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun");
-            return View();
+            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun");
+            return View(new Direccion());
         }
 
-        // POST: Direcciones/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio")] Direccion direccion)
+        public ActionResult Create(Direccion direccion)//POST
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Direccion.Add(direccion);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _direccionRepository.InsertDireccion(direccion);
+                    _direccionRepository.Save();
+                    return RedirectToAction("Index");
+                }
             }
-
-            ViewBag.CodigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
+            }
+            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
             return View(direccion);
         }
 
-        // GET: Direcciones/Edit/5
-        public ActionResult Edit(string IdColonia, string IdPasaje, string IdCasa)
+        public ActionResult Edit(string ColoniaID, string Pasaje_CalleID, string CasaID)//GET
         {
-            if (IdColonia == null || IdPasaje == null || IdCasa == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Direccion direccion = db.Direccion.Find(IdColonia, IdPasaje, IdCasa);
-            if (direccion == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CodigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
+            Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
+            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
             return View(direccion);
         }
 
-        // POST: Direcciones/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio")] Direccion direccion)
+        public ActionResult Edit(Direccion direccion)//POST
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(direccion).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _direccionRepository.UpdateDireccion(direccion);
+                    _direccionRepository.Save();
+                    return RedirectToAction("Index");
+                }
             }
-            ViewBag.CodigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
+            }
+            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
             return View(direccion);
         }
 
-        // GET: Direcciones/Delete/5
-        public ActionResult Delete(string IdColonia, string IdPasaje, string IdCasa)
+        public ActionResult Delete(string ColoniaID, string Pasaje_CalleID, string CasaID, bool? saveChangesError)
         {
-            if (IdColonia == null || IdPasaje == null || IdCasa == null)
+            if (saveChangesError.GetValueOrDefault())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.ErrorMessage = "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador";
             }
-            Direccion direccion = db.Direccion.Find(IdColonia, IdPasaje, IdCasa);
-            if (direccion == null)
-            {
-                return HttpNotFound();
-            }
+            Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
             return View(direccion);
         }
 
-        // POST: Direcciones/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string IdColonia, string IdPasaje, string IdCasa)
+        public ActionResult DeleteConfirmed(string ColoniaID, string Pasaje_CalleID, string CasaID)
         {
-            Direccion direccion = db.Direccion.Find(IdColonia, IdPasaje, IdCasa);
-            db.Direccion.Remove(direccion);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            try
             {
-                db.Dispose();
+                Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
+                _direccionRepository.DeleteDireccion(ColoniaID, Pasaje_CalleID, CasaID);
+                _direccionRepository.Save();
             }
-            base.Dispose(disposing);
+            catch (DataException)
+            {
+                return RedirectToAction("Delete", new System.Web.Routing.RouteValueDictionary { { "Colonia", ColoniaID },{ "Pasaje_Calle", Pasaje_CalleID},{ "Casa", CasaID}, { "saveChangesError", true } });
+            }
+            return RedirectToAction("Index");
         }
     }
 }
