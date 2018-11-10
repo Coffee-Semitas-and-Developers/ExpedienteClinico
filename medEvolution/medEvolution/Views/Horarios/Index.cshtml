@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MedEvolution.Models.App.Horario_De_Atencion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Horarios de Atención</h2>
+
+<table class="table" align="center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoHorario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroCitasAtender)
+            </th>
+            <th>@Html.DisplayName("Acciones")</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoHorario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoraFin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroCitasAtender)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-list" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<p>
+    @Html.ActionLink("Crear Horario", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+

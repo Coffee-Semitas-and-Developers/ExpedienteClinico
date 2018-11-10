@@ -17,14 +17,14 @@ namespace MedEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [DisplayName("Codigo:")]
+        [DisplayName("Código")]
         public int CodigoEspecialidad { get; set; }
 
         [Required]
-        [DisplayName("Nombre de especialidad:")]
+        [DisplayName("Especialidad")]
         [StringLength(30)]
         public string NombreEspecialidad { get; set; }
 
-        public virtual ICollection<Medico> Medicos { get; set; }
+        public virtual ICollection<Empleado> Medicos { get; set; }
     }
 }

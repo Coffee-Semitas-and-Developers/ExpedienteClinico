@@ -19,10 +19,7 @@ namespace medEvolution.Controllers
         // GET: Citas
         public ActionResult Index()
         {
-            //var cita = db.Cita.Include(c => c.Estado).Include(c => c.Medico).Include(c => c.Paciente);
-            //return View(cita.ToList());
             return View(Cita.ToList());
-
         }
 
         // GET: Citas/Details/5
@@ -44,7 +41,7 @@ namespace medEvolution.Controllers
         public ActionResult Create()
         {
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado");
-            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Cargo");
+            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Jvpm");
             ViewBag.IdPaciente = new SelectList(db.Paciente, "IdPaciente", "Dui");
             return View();
         }
@@ -54,7 +51,7 @@ namespace medEvolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCita,FechaCreada,FechaCita,Causa,IdEmpleado,IdPaciente,CodigoEstado")] Cita cita)
+        public ActionResult Create([Bind(Include = "IdCita,FechaCreada,FechaCita,Hora,Causa,IdEmpleado,IdPaciente,CodigoEstado")] Cita cita)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +61,7 @@ namespace medEvolution.Controllers
             }
 
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", cita.CodigoEstado);
-            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Cargo", cita.IdEmpleado);
+            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Jvpm", cita.IdEmpleado);
             ViewBag.IdPaciente = new SelectList(db.Paciente, "IdPaciente", "Dui", cita.IdPaciente);
             return View(cita);
         }
@@ -82,7 +79,7 @@ namespace medEvolution.Controllers
                 return HttpNotFound();
             }
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", cita.CodigoEstado);
-            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Cargo", cita.IdEmpleado);
+            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Jvpm", cita.IdEmpleado);
             ViewBag.IdPaciente = new SelectList(db.Paciente, "IdPaciente", "Dui", cita.IdPaciente);
             return View(cita);
         }
@@ -92,7 +89,7 @@ namespace medEvolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCita,FechaCreada,FechaCita,Causa,IdEmpleado,IdPaciente,CodigoEstado")] Cita cita)
+        public ActionResult Edit([Bind(Include = "IdCita,FechaCreada,FechaCita,Hora,Causa,IdEmpleado,IdPaciente,CodigoEstado")] Cita cita)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +98,7 @@ namespace medEvolution.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", cita.CodigoEstado);
-            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Cargo", cita.IdEmpleado);
+            ViewBag.IdEmpleado = new SelectList(db.Empleado, "IdEmpleado", "Jvpm", cita.IdEmpleado);
             ViewBag.IdPaciente = new SelectList(db.Paciente, "IdPaciente", "Dui", cita.IdPaciente);
             return View(cita);
         }

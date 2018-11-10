@@ -1,0 +1,42 @@
+﻿@model MedEvolution.Models.App.Horario_De_Atencion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Horario de Atención</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroCitasAtender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroCitasAtender)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" }) | |
+    @Html.ActionLink("Regresar", "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
+</p>

@@ -197,7 +197,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PuestosDeTrabajoController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +248,22 @@
     <Compile Include="Migrations\201811052218103_ModeloCita_Modificado.Designer.cs">
       <DependentUpon>201811052218103_ModeloCita_Modificado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811090154593_201811052218103_ModeloCita_Modificado.cs" />
+    <Compile Include="Migrations\201811090154593_201811052218103_ModeloCita_Modificado.Designer.cs">
+      <DependentUpon>201811090154593_201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811090453244_PuestoDeTrabajo-MedicoRemovido.cs" />
+    <Compile Include="Migrations\201811090453244_PuestoDeTrabajo-MedicoRemovido.Designer.cs">
+      <DependentUpon>201811090453244_PuestoDeTrabajo-MedicoRemovido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811090513436_Cita-MedicoEmpleado.cs" />
+    <Compile Include="Migrations\201811090513436_Cita-MedicoEmpleado.Designer.cs">
+      <DependentUpon>201811090513436_Cita-MedicoEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811100605012_Id_Horario_Automatizado.cs" />
+    <Compile Include="Migrations\201811100605012_Id_Horario_Automatizado.Designer.cs">
+      <DependentUpon>201811100605012_Id_Horario_Automatizado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -261,7 +279,7 @@
     <Compile Include="Models\App\Horario_De_Atencion.cs" />
     <Compile Include="Models\App\MedEvolutionDBContext.cs" />
     <Compile Include="Models\App\Medicamento.cs" />
-    <Compile Include="Models\App\Medico.cs" />
+    <Compile Include="Models\App\Puesto_De_Trabajo.cs" />
     <Compile Include="Models\App\Municipio.cs" />
     <Compile Include="Models\App\OrdenExamen.cs" />
     <Compile Include="Models\App\DetalleExamenes.cs" />
@@ -272,6 +290,8 @@
     <Compile Include="Models\Users\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiciosCita.cs" />
+    <Compile Include="Services\ServiciosHorario_De_Atencion.cs" />
+    <Compile Include="Services\ServiciosPuesto_De_Trabajo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -334,13 +354,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Hora.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Citas\Create.cshtml" />
+    <Content Include="Views\Citas\Index.cshtml" />
     <Content Include="Views\Citas\Delete.cshtml" />
     <Content Include="Views\Citas\Details.cshtml" />
     <Content Include="Views\Citas\Edit.cshtml" />
-    <Content Include="Views\Citas\Index.cshtml" />
+    <Content Include="Views\PuestosDeTrabajo\Create.cshtml" />
+    <Content Include="Views\PuestosDeTrabajo\Delete.cshtml" />
+    <Content Include="Views\PuestosDeTrabajo\Details.cshtml" />
+    <Content Include="Views\PuestosDeTrabajo\Edit.cshtml" />
+    <Content Include="Views\PuestosDeTrabajo\Index.cshtml" />
+    <Content Include="Views\Horarios\Create.cshtml" />
+    <Content Include="Views\Horarios\Delete.cshtml" />
+    <Content Include="Views\Horarios\Details.cshtml" />
+    <Content Include="Views\Horarios\Edit.cshtml" />
+    <Content Include="Views\Horarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,6 +421,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811052218103_ModeloCita_Modificado.resx">
       <DependentUpon>201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090154593_201811052218103_ModeloCita_Modificado.resx">
+      <DependentUpon>201811090154593_201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090453244_PuestoDeTrabajo-MedicoRemovido.resx">
+      <DependentUpon>201811090453244_PuestoDeTrabajo-MedicoRemovido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090513436_Cita-MedicoEmpleado.resx">
+      <DependentUpon>201811090513436_Cita-MedicoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811100605012_Id_Horario_Automatizado.resx">
+      <DependentUpon>201811100605012_Id_Horario_Automatizado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -34,9 +34,8 @@ namespace MedEvolution.Services
 
         public IQueryable ToList()
         {
-            var Cita = db.Cita.Include(c => c.Estado).Include(c => c.Medico).Include(c => c.Paciente);
-
-            return Cita;
+           var Cita = db.Cita.Include(c => c.Estado).Include(c => c.Medico).Include(c => c.Paciente);
+           return Cita;
         }
 
     }
