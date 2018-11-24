@@ -15,9 +15,28 @@ namespace medEvolution.Controllers
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
 
         // GET: Pacientes
-        public ActionResult Index()
+        public ActionResult Index(string searchStringName, string searchStringApellido, string searchByDui)
         {
             var paciente = db.Paciente.Include(p => p.Direccion).Include(p => p.Estado);
+            //Sirve para la busqueda de pacientes por nombre
+            if (!String.IsNullOrEmpty(searchStringName))
+            {
+                paciente = paciente.Where(s => s.Nombre2.ToUpper().Contains(searchStringName.ToUpper())
+                                        || s.Nombre1.ToUpper().Contains(searchStringName.ToUpper()));
+            }
+
+            //Sirve para la busqueda de pacientes por apellido
+            if (!String.IsNullOrEmpty(searchStringApellido))
+            {
+                paciente = paciente.Where(s => s.Apellido1.ToUpper().Contains(searchStringApellido.ToUpper())
+                                        || s.Apellido2.ToUpper().Contains(searchStringApellido.ToUpper()));
+            }
+
+            //Sirve para la busqueda de pacientes por dui
+            if (!String.IsNullOrEmpty(searchByDui))
+            {
+                paciente = paciente.Where(s => s.Dui.ToUpper().Contains(searchByDui.ToUpper()));
+            }
             return View(paciente.ToList());
         }
 

@@ -9,6 +9,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())//Para realizar la busqueda del paciente por nombre, apellido o DUI
+{
+    <table class="table">
+        <tr>
+            <th>
+                <p>
+                    Buscar por nombre: @Html.TextBox("SearchStringName")
+                    <input type="submit" value="Buscar" />
+                </p>
+            </th>
+
+            <th>
+                <p>
+                    Buscar por apellido: @Html.TextBox("SearchStringApellido")
+                    <input type="submit" value="Buscar" />
+                </p>
+            </th>
+
+            <th>
+                <p>
+                    Buscar por DUI: @Html.TextBox("SearchByDui")
+                    <input type="submit" value="Buscar" />
+                </p>
+            </th>
+        </tr>
+    </table>   
+}
+
+
 <table class="table">
     <tr>
 
@@ -105,105 +135,106 @@
         <th>Opciones</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dui)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Celular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoSangre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaNac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ocupacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CorreoElectronico)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Alergia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Discapacidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoDiscapacidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreMadre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoMadre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombrePadre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoPadre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EstadoCivil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreConyugue)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoConyugue)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreContactoEmergencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoContactoEmergencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TelefonoContactoEmergencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CelularContactoEmergencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion.Casa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion.Pasaje_Calle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion.Colonia)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IdPaciente }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdPaciente }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdPaciente })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dui)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoSangre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ocupacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoElectronico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alergia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discapacidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDiscapacidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMadre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoMadre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePadre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoPadre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoCivil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreConyugue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoConyugue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreContactoEmergencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoContactoEmergencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoContactoEmergencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CelularContactoEmergencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion.Casa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion.Pasaje_Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion.Colonia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdPaciente }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdPaciente }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdPaciente })
+            </td>
+        </tr>
+    }
 
 </table>
