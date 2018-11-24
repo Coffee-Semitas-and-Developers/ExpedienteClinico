@@ -79,7 +79,10 @@ namespace medEvolution.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", paciente.Colonia);
+           
+            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia");
+            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle");
+            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa");
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", paciente.CodigoEstado);
             return View(paciente);
         }
@@ -97,7 +100,9 @@ namespace medEvolution.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", paciente.Colonia);
+            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia", paciente.Colonia);
+            ViewBag.Colonia = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle", paciente.Pasaje_Calle);
+            ViewBag.Colonia = new SelectList(db.Direccion, "Casa", "Casa", paciente.Casa);
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", paciente.CodigoEstado);
             return View(paciente);
         }
