@@ -201,6 +201,7 @@
     <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="DAL\DireccionRepository.cs" />
     <Compile Include="DAL\IDireccionRepository.cs" />
@@ -351,6 +352,11 @@
     <Content Include="Views\Direcciones\Create.cshtml" />
     <Content Include="Views\Direcciones\Edit.cshtml" />
     <Content Include="Views\Direcciones\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Create.cshtml" />
+    <Content Include="Views\Pacientes\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Details.cshtml" />
+    <Content Include="Views\Pacientes\Edit.cshtml" />
+    <Content Include="Views\Pacientes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

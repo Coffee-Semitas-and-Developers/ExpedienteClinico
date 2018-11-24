@@ -14,6 +14,7 @@ namespace MedEvolution.Models.App
     {
         public Direccion()
         {
+            DireccionCompleta = Colonia + Pasaje_Calle + Casa;
         }
 
         [Key]
@@ -42,6 +43,11 @@ namespace MedEvolution.Models.App
         [DisplayName("Municipio:")]
         public int CodigoMunicipio { get; set; }
         public virtual Municipio Municipio { get; set; }
+
+        //String para tener una sola linea de direccion
+        [NotMapped]
+        [DisplayName("Dirección:")]
+        public string DireccionCompleta { get; set; }
 
     }
 }
