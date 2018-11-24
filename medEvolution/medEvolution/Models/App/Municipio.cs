@@ -16,12 +16,12 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
-        [DisplayName("Código Municipio:")]
+        [DisplayName("Código de Municipio:")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CodigoMunicipio { get; set; }
 
         [Required]
-        [DisplayName("Nombre Municipio:")]
+        [DisplayName("Nombre de Municipio:")]
         [StringLength(30)]
         public string NombreMun { get; set; }
 

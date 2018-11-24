@@ -20,23 +20,23 @@ namespace MedEvolution.Models.App
         [Key]
         [Column(Order = 0)]
         [StringLength(30)]
-        [Description("Colonia:")]
+        [DisplayName("Colonia:")]
         public string Colonia { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(30)]
-        [Description("Pasaje o calle:")]
+        [DisplayName("Pasaje o calle:")]
         public string Pasaje_Calle { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [StringLength(30)]
-        [Description("Casa:")]
+        [DisplayName("Casa:")]
         public string Casa { get; set; }
 
         [StringLength(50)]
-        [Description("Detalle:")]
+        [DisplayName("Detalle:")]
         public string Detalle { get; set; }
 
         [Column("Municipio_CodigoMunicipio")]

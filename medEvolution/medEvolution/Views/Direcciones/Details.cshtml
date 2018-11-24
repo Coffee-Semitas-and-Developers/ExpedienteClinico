@@ -1,10 +1,10 @@
 ﻿@model MedEvolution.Models.App.Direccion
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Direccion</h4>
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { ColoniaID = Model.Colonia, Pasaje_CalleID = Model.Pasaje_Calle, CasaID = Model.Casa }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { ColoniaID = Model.Colonia, Pasaje_CalleID = Model.Pasaje_Calle, CasaID = Model.Casa }, new { @class = "btn btn-warning" }) 
+    @Html.ActionLink("Regresar a la lista", "Index", null, new { @class = "btn btn-primary" })
 </p>

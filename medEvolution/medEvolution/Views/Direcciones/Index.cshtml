@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MedEvolution.Models.App.Direccion>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Indice";
 }
 
-<h2>Index</h2>
+<h2>Direcciones</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva", "Create", null, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Detalle)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }) |
-            @Html.ActionLink("Details", "Details", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }) |
-            @Html.ActionLink("Delete", "Delete", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa })
+            @Html.ActionLink("Editar", "Edit", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Detalles", "Details", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Eliminar", "Delete", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
