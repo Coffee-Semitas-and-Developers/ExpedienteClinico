@@ -141,108 +141,108 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+    <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dui)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Celular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoSangre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sexo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ocupacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CorreoElectronico)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alergia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discapacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoDiscapacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreMadre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoMadre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombrePadre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoPadre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoCivil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreConyugue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoConyugue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreContactoEmergencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoContactoEmergencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoContactoEmergencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CelularContactoEmergencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion.Casa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion.Pasaje_Calle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion.Colonia)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IdPaciente }, new { @class = "btn btn-warning" }) 
-            </td>
-            <td>
-                @Html.ActionLink("Detalles", "Details", new { id = item.IdPaciente }, new { @class = "btn btn-primary" })
-            </td>
-            <td>
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdPaciente }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dui)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoSangre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ocupacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorreoElectronico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alergia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discapacidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDiscapacidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreMadre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoMadre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombrePadre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoPadre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoCivil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreConyugue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoConyugue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreContactoEmergencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoContactoEmergencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelefonoContactoEmergencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CelularContactoEmergencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion.Casa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion.Pasaje_Calle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion.Colonia)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { PacienteID = item.IdPaciente }, new { @class = "btn btn-warning" })
+        </td>@*id = item.IdPaciente*@
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { PacienteID = item.IdPaciente }, new { @class = "btn btn-primary" })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { PacienteID = item.IdPaciente }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
     }
 
 </table>

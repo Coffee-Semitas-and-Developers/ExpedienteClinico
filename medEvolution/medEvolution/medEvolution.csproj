@@ -211,6 +211,8 @@
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="DAL\DireccionRepository.cs" />
     <Compile Include="DAL\IDireccionRepository.cs" />
+    <Compile Include="DAL\IPacienteRepository.cs" />
+    <Compile Include="DAL\PacienteRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
