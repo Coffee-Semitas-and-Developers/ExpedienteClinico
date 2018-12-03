@@ -1,0 +1,58 @@
+﻿@model MedEvolution.Models.App.Clinica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clinica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdClinica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdClinica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreClinica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreClinica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion.Colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion.Colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion.Pasaje_Calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion.Pasaje_Calle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdClinica }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

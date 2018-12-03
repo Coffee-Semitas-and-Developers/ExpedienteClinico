@@ -18,18 +18,19 @@ namespace MedEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Description("Identificador clínica:")]
+        [DisplayName("Identificador clínica:")]
         public int IdClinica { get; set; }
 
         [Required]
         [StringLength(30)]
-        [Description("Nombre de la clínica:")]
+        [DisplayName("Nombre de la clínica:")]
+        //[RegularExpression("^[^-][0-9]$")]
         public string NombreClinica { get; set; }
 
         [Required]
         [StringLength(10)]
-        [RegularExpression("####-####")]
-        [Description("Teléfono:")]
+        //[RegularExpression()]
+        [DisplayName("Teléfono:")]
         public string Telefono { get; set; }
 
         [Required]
