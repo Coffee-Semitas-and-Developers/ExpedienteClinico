@@ -208,7 +208,6 @@
     <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="DAL\DireccionRepository.cs" />
@@ -373,11 +372,6 @@
     <Content Include="Views\Clinicas\Details.cshtml" />
     <Content Include="Views\Clinicas\Edit.cshtml" />
     <Content Include="Views\Clinicas\Index.cshtml" />
-    <Content Include="Views\Medicos\Create.cshtml" />
-    <Content Include="Views\Medicos\Delete.cshtml" />
-    <Content Include="Views\Medicos\Details.cshtml" />
-    <Content Include="Views\Medicos\Edit.cshtml" />
-    <Content Include="Views\Medicos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
