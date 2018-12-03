@@ -18,7 +18,7 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
-        [DisplayName("Identificador de cita")]
+        [DisplayName("Id Cita")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCita { get; set; }
        
@@ -36,16 +36,22 @@ namespace MedEvolution.Models.App
         [Remote("FechaParaCita", "Validaciones", ErrorMessage ="La fecha de la cita no puede ser inferior al día de hoy")]
         public DateTime FechaCita { get; set; }
 
+        [ScaffoldColumn(false)]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        public DateTime Hora { get; set; }
+
         [Required]
         [StringLength(100)]
-        [DisplayName("Causa:")]
+        [DataType(DataType.MultilineText)]
+        [DisplayName("Causa")]
         public string Causa { get; set; }
 
         [Required]
         [Column("Medico_IdEmpleado")]
-        [DisplayName("Médico:")]
+        [DisplayName("Médico")]
         public int IdEmpleado { get; set; }
-        public virtual Medico Medico { get; set; }
+        public virtual Empleado Medico { get; set; }
 
         [Required]
         [Column("Paciente_IdPaciente")]

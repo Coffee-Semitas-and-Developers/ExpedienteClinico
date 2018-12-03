@@ -20,5 +20,13 @@ namespace MedEvolution.Controllers.Validaciones
 
             return Json(IsValid, JsonRequestBehavior.AllowGet);
         }
+
+        //Validacion para el numero de citas atender del lado del cliente
+        public JsonResult NumeroDeCitas(int NumeroCitasAtender)
+        {
+            var IsValid = NumeroCitasAtender >= 0 ;
+
+            return Json(IsValid, JsonRequestBehavior.AllowGet);
+        }
     }
 }

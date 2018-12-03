@@ -158,7 +158,7 @@ namespace MedEvolution.Models.App
 
         //String para crear una sola linea de del nombre: Nombre1+Apellido1
         [NotMapped]
-        [DisplayName("Nombre:")]
+        [DisplayName("Nombre")]
         public string Nombre { get; set; }
 
         public int CalcularEdad(DateTime FechaNac)
