@@ -210,6 +210,7 @@
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
+    <Compile Include="Controllers\Puesto_De_TrabajoController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="DAL\DireccionRepository.cs" />
     <Compile Include="DAL\IDireccionRepository.cs" />
@@ -392,6 +393,11 @@
     <Content Include="Views\Clinicas\Details.cshtml" />
     <Content Include="Views\Clinicas\Edit.cshtml" />
     <Content Include="Views\Clinicas\Index.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Create.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Delete.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Details.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Edit.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
