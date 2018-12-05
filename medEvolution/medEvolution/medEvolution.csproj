@@ -48,9 +48,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -198,11 +206,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
+    <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PuestosDeTrabajoController.cs" />
+    <Compile Include="Controllers\PacientesController.cs" />
+    <Compile Include="Controllers\Puesto_De_TrabajoController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
+    <Compile Include="DAL\DireccionRepository.cs" />
+    <Compile Include="DAL\IDireccionRepository.cs" />
+    <Compile Include="DAL\IPacienteRepository.cs" />
+    <Compile Include="DAL\PacienteRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,6 +320,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -391,6 +407,21 @@
     <Content Include="Views\Citas\Delete.cshtml" />
     <Content Include="Views\Citas\Details.cshtml" />
     <Content Include="Views\Citas\Edit.cshtml" />
+    <Content Include="Views\Direcciones\Index.cshtml" />
+    <Content Include="Views\Direcciones\Details.cshtml" />
+    <Content Include="Views\Direcciones\Create.cshtml" />
+    <Content Include="Views\Direcciones\Edit.cshtml" />
+    <Content Include="Views\Direcciones\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Create.cshtml" />
+    <Content Include="Views\Pacientes\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Details.cshtml" />
+    <Content Include="Views\Pacientes\Edit.cshtml" />
+    <Content Include="Views\Pacientes\Index.cshtml" />
+    <Content Include="Views\Clinicas\Create.cshtml" />
+    <Content Include="Views\Clinicas\Delete.cshtml" />
+    <Content Include="Views\Clinicas\Details.cshtml" />
+    <Content Include="Views\Clinicas\Edit.cshtml" />
+    <Content Include="Views\Clinicas\Index.cshtml" />
     <Content Include="Views\PuestosDeTrabajo\Create.cshtml" />
     <Content Include="Views\PuestosDeTrabajo\Delete.cshtml" />
     <Content Include="Views\PuestosDeTrabajo\Details.cshtml" />
