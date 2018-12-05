@@ -16,17 +16,17 @@ namespace medEvolution.Models.App
         }
 
         [Key]
-        [DisplayName("Código de Municipio:")]
+        [DisplayName("Código de Municipio")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CodigoMunicipio { get; set; }
 
         [Required]
-        [DisplayName("Nombre de Municipio:")]
+        [DisplayName("Nombre de Municipio")]
         [StringLength(30)]
         public string NombreMun { get; set; }
 
         [Column("Departamento_CodigoDepartamento")]
-        [DisplayName("Departamento:")]
+        [DisplayName("Departamento")]
         public int CodigoDepartamento { get; set; }
         public virtual Departamento Departamento { get; set; }
 
