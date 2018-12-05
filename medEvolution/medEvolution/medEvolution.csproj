@@ -207,12 +207,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\DetalleExamenesController.cs" />
     <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\Especialidad_DesempeniadaController.cs" />
+    <Compile Include="Controllers\ExamenesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedicamentosController.cs" />
+    <Compile Include="Controllers\OrdenExamenesController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\RecetasController.cs" />
     <Compile Include="Controllers\PuestosDeTrabajoController.cs" />
@@ -457,6 +460,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Examenes\Create.cshtml" />
+    <Content Include="Views\Examenes\Delete.cshtml" />
+    <Content Include="Views\Examenes\Details.cshtml" />
+    <Content Include="Views\Examenes\Edit.cshtml" />
+    <Content Include="Views\Examenes\Index.cshtml" />
+    <Content Include="Views\OrdenExamenes\Create.cshtml" />
+    <Content Include="Views\OrdenExamenes\Delete.cshtml" />
+    <Content Include="Views\OrdenExamenes\Details.cshtml" />
+    <Content Include="Views\OrdenExamenes\Edit.cshtml" />
+    <Content Include="Views\OrdenExamenes\Index.cshtml" />
+    <Content Include="Views\DetalleExamenes\Create.cshtml" />
+    <Content Include="Views\DetalleExamenes\Delete.cshtml" />
+    <Content Include="Views\DetalleExamenes\Details.cshtml" />
+    <Content Include="Views\DetalleExamenes\Edit.cshtml" />
+    <Content Include="Views\DetalleExamenes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

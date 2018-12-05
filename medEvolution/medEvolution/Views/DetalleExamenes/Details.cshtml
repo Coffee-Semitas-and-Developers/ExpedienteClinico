@@ -1,0 +1,34 @@
+﻿@model medEvolution.Models.App.DetalleExamenes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleExamenes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Examen.TipoMuestra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Examen.TipoMuestra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdenExamen.IdOrden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdenExamen.IdOrden)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DetalleExamenesId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

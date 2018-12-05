@@ -1,0 +1,40 @@
+﻿@model medEvolution.Models.App.Examen
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Examen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMuestra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMuestra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreExamen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreExamen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
