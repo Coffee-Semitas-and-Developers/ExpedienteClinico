@@ -1,10 +1,10 @@
-﻿@model MedEvolution.Models.App.Paciente
+﻿@model medEvolution.Models.App.Paciente
 
 @{
     ViewBag.Title = "Eliminar";
 }
 
-<h2>Eliminar Paciente</h2>
+<h2>Borrar</h2>
 
 <h3>¿Esta seguro que desea eliminar al paciente?</h3>
 <div>
@@ -237,12 +237,16 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-danger" /> 
-            @Html.ActionLink("Regresar a la lista", "Index",null, new { @class = "btn btn-primary" })
+    @using (Html.BeginForm())
+    {
+             @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Borrar" class="btn btn-danger" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
         </div>
     }
 </div>

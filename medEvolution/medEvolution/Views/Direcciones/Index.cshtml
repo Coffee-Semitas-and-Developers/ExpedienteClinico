@@ -46,12 +46,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Detalle)
         </td>
+       
         <td>
-            @Html.ActionLink("Editar", "Edit", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, new { @class = "btn btn-warning" }) 
-            @Html.ActionLink("Detalles", "Details", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, new { @class = "btn btn-primary" }) 
-            @Html.ActionLink("Eliminar", "Delete", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, new { @class = "btn btn-danger" })
+            @Html.ActionLink(" ", "Edit", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+            @Html.ActionLink(" ", "Delete", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
         </td>
     </tr>
 }
 
 </table>
+<p>
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nueva direccion" })
+</p>

@@ -3,9 +3,10 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<h2>Empleados</h2>
 
 <body>
+
     <table class="table">
         <tr>
             <th>
@@ -43,48 +44,49 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdEmpleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Dui)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Edad)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sexo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Puesto.NombrePuesto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Celular)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CorreoElectronico)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdEmpleado }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdEmpleado }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdEmpleado })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dui)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puesto.NombrePuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoElectronico)
+            </td>
+           
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.IdEmpleado }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.IdEmpleado }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.IdEmpleado }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
+            </td>
+        </tr>
         }
 
     </table>
 </body>
 <p>
-    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Agregar Empleado" })
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nuevo empleado" })
 </p>
 

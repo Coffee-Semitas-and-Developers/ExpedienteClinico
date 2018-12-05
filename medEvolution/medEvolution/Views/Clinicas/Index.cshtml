@@ -1,14 +1,12 @@
-﻿@model IEnumerable<MedEvolution.Models.App.Clinica>
+﻿@model IEnumerable<medEvolution.Models.App.Clinica>
 
 @{
     ViewBag.Title = "Clínicas";
 }
 
-<h2>Index</h2>
+<h2>Clinicas</h2>
 
-<p>
-    @Html.ActionLink("Crear Nueva Clínica", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -46,12 +44,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Pasaje_Calle)
         </td>
+       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IdClinica }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdClinica }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdClinica })
+            @Html.ActionLink(" ", "Edit", new { id = item.IdClinica }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.IdClinica }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.IdClinica }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
         </td>
     </tr>
 }
 
 </table>
+<p>
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nueva clinica" })
+</p>

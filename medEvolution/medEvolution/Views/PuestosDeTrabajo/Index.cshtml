@@ -33,34 +33,35 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoPuesto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombrePuesto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraFin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HorasLaborales)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil", @title = "Editar" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-list", @title = "Detalles" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-trash", @title = "Borrar" })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoPuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombrePuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HorasLaborales)
+        </td>
+    
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
+        </td>
+    </tr>
     }
 
 </table>
 <p>
-    @Html.ActionLink(" ", "Create", "", htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nuevo Puesto" })
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nuevo Puesto de trabajo" })
 </p>

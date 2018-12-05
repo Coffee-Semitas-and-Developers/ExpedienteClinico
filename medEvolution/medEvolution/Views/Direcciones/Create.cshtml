@@ -4,13 +4,13 @@
     ViewBag.Title = "Crear";
 }
 
-<h2>Crear</h2>
+<h2>Nuevo</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Direccion</h4>
         <hr />
@@ -63,9 +63,9 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Regresar a la lista", "Index", null, new { @class = "btn btn-primary" })
-</div>
+    <div>
+        @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

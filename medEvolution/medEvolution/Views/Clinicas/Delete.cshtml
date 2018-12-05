@@ -1,12 +1,14 @@
-﻿@model MedEvolution.Models.App.Clinica
+﻿@model medEvolution.Models.App.Clinica
 
 @{
-    ViewBag.Title = "Delete";
+                /**/
+
+                ViewBag.Title = "Eliminar";
 }
 
-<h2>Delete</h2>
+<h2>Borrar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Está seguro que desea eliminar la clinica?</h3>
 <div>
     <h4>Clinica</h4>
     <hr />
@@ -37,12 +39,16 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Borrar" class="btn btn-danger" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
         </div>
     }
 </div>

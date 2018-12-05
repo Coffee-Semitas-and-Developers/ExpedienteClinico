@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MedEvolution.Models.App.Paciente>
+﻿@model IEnumerable<medEvolution.Models.App.Paciente>
 
 @{
     ViewBag.Title = "Pacientes";
@@ -6,10 +6,7 @@
 
 <h2>Expedientes</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo", "Create",null ,new { @class = "btn btn-success" })
-</p>
-    
+
 
 
 @using (Html.BeginForm())//Para realizar la busqueda del paciente por nombre, apellido o DUI
@@ -246,3 +243,6 @@
     }
 
 </table>
+<p>
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nuevo Paciente" })
+</p>
