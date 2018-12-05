@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\EspecialidadDesempeniadaController.cs" />
+    <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -285,6 +286,10 @@
     <Compile Include="Migrations\201811111930554_CambioDeFormatoATime.cs" />
     <Compile Include="Migrations\201811111930554_CambioDeFormatoATime.Designer.cs">
       <DependentUpon>201811111930554_CambioDeFormatoATime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812050502325_IdEmpleado.cs" />
+    <Compile Include="Migrations\201812050502325_IdEmpleado.Designer.cs">
+      <DependentUpon>201812050502325_IdEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
@@ -450,6 +455,11 @@
     <Content Include="Views\EspecialidadDesempeniada\Details.cshtml" />
     <Content Include="Views\EspecialidadDesempeniada\Edit.cshtml" />
     <Content Include="Views\EspecialidadDesempeniada\Index.cshtml" />
+    <Content Include="Views\Empleados\Create.cshtml" />
+    <Content Include="Views\Empleados\Delete.cshtml" />
+    <Content Include="Views\Empleados\Details.cshtml" />
+    <Content Include="Views\Empleados\Edit.cshtml" />
+    <Content Include="Views\Empleados\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -507,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811111930554_CambioDeFormatoATime.resx">
       <DependentUpon>201811111930554_CambioDeFormatoATime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812050502325_IdEmpleado.resx">
+      <DependentUpon>201812050502325_IdEmpleado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

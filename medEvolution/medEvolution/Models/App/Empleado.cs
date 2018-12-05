@@ -16,8 +16,8 @@ namespace medEvolution.Models.App
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Description("Identificador de empleado:")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DisplayName("ID de empleado")]
         public int IdEmpleado { get; set; }
 
         [Required]
