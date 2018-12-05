@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace medEvolution.Models.App
 {
@@ -158,6 +159,7 @@ namespace medEvolution.Models.App
         [NotMapped]
         [DisplayName("Nombre")]
         public string Nombre => Nombre1 + " " + Apellido1;
+
 
         public int CalcularEdad()
         {

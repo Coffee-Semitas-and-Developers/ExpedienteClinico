@@ -21,6 +21,19 @@ namespace medEvolution.Controllers
             return View(empleado.ToList());
         }
 
+        [HttpGet]
+        public ActionResult GetMunicipios(int cod)
+        {
+            if (cod!=0)
+            {
+                var repo = new Departamento();
+
+                IEnumerable<SelectListItem> municipios = repo.GetMunicipios(cod);
+                return Json(municipios, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
         // GET: Empleados/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,7 +53,10 @@ namespace medEvolution.Controllers
         public ActionResult Create()
         {
             ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica");
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle");
+            //ViewBag.Departamento = new SelectList(db.Departamento, "CodigoDepartamento", "NombreDep");
+            ViewBag.Departamento = db.Departamento.ToList();
+            //ViewBag.Municipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun","CodigoDepartamento",new Departamento (1, "Santa Ana"));
+            ViewBag.Municipio = db.Municipio.ToList();
             ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad");
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado");
             ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto");
