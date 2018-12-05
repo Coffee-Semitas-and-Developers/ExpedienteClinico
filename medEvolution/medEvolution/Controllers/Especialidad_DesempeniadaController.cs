@@ -10,112 +10,107 @@ using MedEvolution.Models.App;
 
 namespace medEvolution.Controllers
 {
-    public class Puesto_De_TrabajoController : Controller
+    public class Especialidad_DesempeniadaController : Controller
     {
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
 
-        // GET: Puesto_De_Trabajo
+        // GET: Especialidad_Desempeniada
         public ActionResult Index()
         {
-            var puestoDeTrabajo = db.PuestoDeTrabajo.Include(p => p.Horario_De_Atencion);
-            return View(puestoDeTrabajo.ToList());
+            return View(db.Especialidad_Desempeniada.ToList());
         }
 
-        // GET: Puesto_De_Trabajo/Details/5
+        // GET: Especialidad_Desempeniada/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Puesto_De_Trabajo puesto_De_Trabajo = db.PuestoDeTrabajo.Find(id);
-            if (puesto_De_Trabajo == null)
+            Especialidad_Desempeniada especialidad_Desempeniada = db.Especialidad_Desempeniada.Find(id);
+            if (especialidad_Desempeniada == null)
             {
                 return HttpNotFound();
             }
-            return View(puesto_De_Trabajo);
+            return View(especialidad_Desempeniada);
         }
 
-        // GET: Puesto_De_Trabajo/Create
+        // GET: Especialidad_Desempeniada/Create
         public ActionResult Create()
         {
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario");
             return View();
         }
 
-        // POST: Puesto_De_Trabajo/Create
+        // POST: Especialidad_Desempeniada/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodigoPuesto,NombrePuesto,Salario,CodigoHorario")] Puesto_De_Trabajo puesto_De_Trabajo)
+        public ActionResult Create([Bind(Include = "CodigoEspecialidad,NombreEspecialidad")] Especialidad_Desempeniada especialidad_Desempeniada)
         {
             if (ModelState.IsValid)
             {
-                db.PuestoDeTrabajo.Add(puesto_De_Trabajo);
+                db.Especialidad_Desempeniada.Add(especialidad_Desempeniada);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario", puesto_De_Trabajo.CodigoHorario);
-            return View(puesto_De_Trabajo);
+            return View(especialidad_Desempeniada);
         }
 
-        // GET: Puesto_De_Trabajo/Edit/5
+        // GET: Especialidad_Desempeniada/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Puesto_De_Trabajo puesto_De_Trabajo = db.PuestoDeTrabajo.Find(id);
-            if (puesto_De_Trabajo == null)
+            Especialidad_Desempeniada especialidad_Desempeniada = db.Especialidad_Desempeniada.Find(id);
+            if (especialidad_Desempeniada == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario", puesto_De_Trabajo.CodigoHorario);
-            return View(puesto_De_Trabajo);
+            return View(especialidad_Desempeniada);
         }
 
-        // POST: Puesto_De_Trabajo/Edit/5
+        // POST: Especialidad_Desempeniada/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodigoPuesto,NombrePuesto,Salario,CodigoHorario")] Puesto_De_Trabajo puesto_De_Trabajo)
+        public ActionResult Edit([Bind(Include = "CodigoEspecialidad,NombreEspecialidad")] Especialidad_Desempeniada especialidad_Desempeniada)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(puesto_De_Trabajo).State = EntityState.Modified;
+                db.Entry(especialidad_Desempeniada).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario", puesto_De_Trabajo.CodigoHorario);
-            return View(puesto_De_Trabajo);
+            return View(especialidad_Desempeniada);
         }
 
-        // GET: Puesto_De_Trabajo/Delete/5
+        // GET: Especialidad_Desempeniada/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Puesto_De_Trabajo puesto_De_Trabajo = db.PuestoDeTrabajo.Find(id);
-            if (puesto_De_Trabajo == null)
+            Especialidad_Desempeniada especialidad_Desempeniada = db.Especialidad_Desempeniada.Find(id);
+            if (especialidad_Desempeniada == null)
             {
                 return HttpNotFound();
             }
-            return View(puesto_De_Trabajo);
+            return View(especialidad_Desempeniada);
         }
 
-        // POST: Puesto_De_Trabajo/Delete/5
+        // POST: Especialidad_Desempeniada/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Puesto_De_Trabajo puesto_De_Trabajo = db.PuestoDeTrabajo.Find(id);
-            db.PuestoDeTrabajo.Remove(puesto_De_Trabajo);
+            Especialidad_Desempeniada especialidad_Desempeniada = db.Especialidad_Desempeniada.Find(id);
+            db.Especialidad_Desempeniada.Remove(especialidad_Desempeniada);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

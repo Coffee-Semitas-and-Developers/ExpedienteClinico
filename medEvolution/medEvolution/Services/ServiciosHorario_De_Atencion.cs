@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MedEvolution.Models.App;
+using medEvolution.Models.App;
 
-namespace MedEvolution.Services
+namespace medEvolution.Services
 {
     public class ServiciosHorario_De_Atencion
     {
@@ -29,7 +29,7 @@ namespace MedEvolution.Services
 
         public void ContarHorasLaborales()
         {
-            Horario.HorasLaborales = DateTime.Parse(Horario.HoraFin.Subtract(Horario.HoraInicio).TotalHours.ToString());
+            Horario.HorasLaborales = Horario.HoraFin.Subtract(Horario.HoraInicio);
         }
     }
 }

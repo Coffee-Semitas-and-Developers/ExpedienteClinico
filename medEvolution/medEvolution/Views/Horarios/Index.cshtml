@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MedEvolution.Models.App.Horario_De_Atencion>
+﻿@model IEnumerable<medEvolution.Models.App.Horario_De_Atencion>
 
 @{
     ViewBag.Title = "Index";
@@ -6,8 +6,8 @@
 
 <h2>Horarios de Atención</h2>
 
-<table class="table" align="center">
-    <thead>
+<table class="table table-striped">
+    <thead style="background-color:lightskyblue">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CodigoHorario)
@@ -21,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.NumeroCitasAtender)
             </th>
-            <th>@Html.DisplayName("Acciones")</th>
+            <th align="center">
+                @Html.DisplayName("Acciones")
+            </th>
         </tr>
     </thead>
 
@@ -42,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.NumeroCitasAtender)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-list" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-trash" })
+                    @Html.ActionLink(" ", "Edit", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.CodigoHorario }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.CodigoHorario }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
                 </td>
             </tr>
         }
@@ -52,6 +54,6 @@
 
 </table>
 <p>
-    @Html.ActionLink("Crear Horario", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class= "btn btn-primary glyphicon glyphicon-plus", @title="Nuevo horario" })
 </p>
 

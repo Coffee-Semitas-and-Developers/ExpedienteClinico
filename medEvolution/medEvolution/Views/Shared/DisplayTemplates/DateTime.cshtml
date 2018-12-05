@@ -1,13 +1,9 @@
 ﻿@model DateTime?
 
-@if (Model.GetType().Name == "Date")
-{
-    <span type="date">@Model.Value.ToString("dd/MMM/yyyy")</span>
+@{
+    Layout = "";
 }
-else
-{
-    <span type="time">@Model.Value.ToString("HH:mm")</span>
-}
+<span type="date">@Model.Value.ToString("dd/MMM/yyyy")</span>
 
 
 

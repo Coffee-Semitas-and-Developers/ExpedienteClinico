@@ -37,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" }) | |
-    @Html.ActionLink("Regresar", "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
+    @Html.ActionLink(" ", "Edit", new { id = Model.CodigoHorario }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil btn btn-warning", @title = "Editar" })
 </p>

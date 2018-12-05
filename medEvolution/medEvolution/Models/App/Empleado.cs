@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MedEvolution.Models.App
+namespace medEvolution.Models.App
 {
     [Table("Empleado")]
     public class Empleado : Persona

@@ -5,10 +5,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MedEvolution.Models.App;
+using medEvolution.Models.App;
 
 
-namespace MedEvolution.Services
+namespace medEvolution.Services
 {
     public class ServiciosCita: IValidatableObject
     {

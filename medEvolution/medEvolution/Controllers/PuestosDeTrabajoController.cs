@@ -6,8 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MedEvolution.Models.App;
-using MedEvolution.Services;
+using medEvolution.Models.App;
+using medEvolution.Services;
 
 namespace medEvolution.Controllers
 {
@@ -40,7 +40,9 @@ namespace medEvolution.Controllers
         // GET: PuestosDeTrabajo/Create
         public ActionResult Create()
         {
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "Horario");
+            List<Horario_De_Atencion> horarios = new List<Horario_De_Atencion>();
+            horarios = db.Horario_De_Atencion.ToList();
+            ViewBag.Horario = horarios;
             return View();
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MedEvolution.Models.App.Puesto_De_Trabajo>
+﻿@model IEnumerable<medEvolution.Models.App.Puesto_De_Trabajo>
 
 @{
     ViewBag.Title = "Index";
@@ -6,58 +6,61 @@
 
 <h2>Puestos de Trabajo</h2>
 
-<p>
-    @Html.ActionLink("Nuevo Puesto", "Create","",htmlAttributes: new { @class = "btn btn-primary"})
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CodigoPuesto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombrePuesto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Horario_De_Atencion.HoraInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Horario_De_Atencion.HoraFin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Horario_De_Atencion.HorasLaborales)
-        </th>
-        <th>@Html.DisplayName("Acciones")</th>
-    </tr>
+<table class="table table-striped">
+    <thead style="background-color:aquamarine">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoPuesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePuesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario_De_Atencion.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario_De_Atencion.HoraFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario_De_Atencion.HorasLaborales)
+            </th>
+            <th>@Html.DisplayName("Acciones")</th>
+        </tr>
+    </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoPuesto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombrePuesto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraFin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HorasLaborales)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil"}) |
-            @Html.ActionLink("Details", "Details", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-list" }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-trash" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HoraFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario_De_Atencion.HorasLaborales)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil", @title = "Editar" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-list", @title = "Detalles" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.CodigoPuesto }, htmlAttributes: new { @class = "glyphicon glyphicon-trash", @title = "Borrar" })
+            </td>
+        </tr>
+    }
 
 </table>
+<p>
+    @Html.ActionLink(" ", "Create", "", htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nuevo Puesto" })
+</p>

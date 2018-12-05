@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MedEvolution.Models.App
+namespace medEvolution.Models.App
 {
     [Table("PuestoDeTrabajo")]
     public class Puesto_De_Trabajo
@@ -25,8 +25,10 @@ namespace MedEvolution.Models.App
         public string NombrePuesto { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:c}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Currency)]
         [DisplayName("Salario")]
+        [Range(1, 10000, ErrorMessage = "El salario debe estar entre $1 y $10000")]
         public decimal Salario { get; set; }
 
         [Required]

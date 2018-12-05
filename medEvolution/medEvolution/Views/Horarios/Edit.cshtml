@@ -21,7 +21,6 @@
             @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.DisplayFor(model => model.HoraInicio)
                 @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -29,8 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HoraFin, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.DisplayFor(model => model.HoraFin)
+                @Html.EditorFor(model => model.HoraFin, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HoraFin, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,15 +43,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success"/>
             </div>
         </div>
     </div>
 }
 
-<div>
-   @Html.ActionLink("Regresar", "Index", null, htmlAttributes: new { @class = "btn btn-primary" })
-</div>
+    <div>
+        @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
