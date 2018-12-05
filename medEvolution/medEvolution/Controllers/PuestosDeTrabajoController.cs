@@ -40,7 +40,9 @@ namespace medEvolution.Controllers
         // GET: PuestosDeTrabajo/Create
         public ActionResult Create()
         {
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "Horario");
+            List<Horario_De_Atencion> horarios = new List<Horario_De_Atencion>();
+            horarios = db.Horario_De_Atencion.ToList();
+            ViewBag.Horario = horarios;
             return View();
         }
 
