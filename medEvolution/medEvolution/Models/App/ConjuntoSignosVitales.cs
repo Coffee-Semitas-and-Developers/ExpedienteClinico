@@ -21,7 +21,7 @@ namespace medEvolution.Models.App
 
         [Required]
         [DisplayName("Presión Arterial:")]
-        public decimal PresionArterial { get; set; }
+        public string PresionArterial { get; set; }
 
         [Required]
         [DisplayName("Temperatura:")]

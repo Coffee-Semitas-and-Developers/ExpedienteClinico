@@ -207,6 +207,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\ConjuntoSignosVitalesController.cs" />
     <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EspecialidadDesempeniadaController.cs" />
@@ -290,6 +291,10 @@
     <Compile Include="Migrations\201812050502325_IdEmpleado.cs" />
     <Compile Include="Migrations\201812050502325_IdEmpleado.Designer.cs">
       <DependentUpon>201812050502325_IdEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812050836035_CambiarDecimalString.cs" />
+    <Compile Include="Migrations\201812050836035_CambiarDecimalString.Designer.cs">
+      <DependentUpon>201812050836035_CambiarDecimalString.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
@@ -460,6 +465,11 @@
     <Content Include="Views\Empleados\Details.cshtml" />
     <Content Include="Views\Empleados\Edit.cshtml" />
     <Content Include="Views\Empleados\Index.cshtml" />
+    <Content Include="Views\ConjuntoSignosVitales\Create.cshtml" />
+    <Content Include="Views\ConjuntoSignosVitales\Delete.cshtml" />
+    <Content Include="Views\ConjuntoSignosVitales\Details.cshtml" />
+    <Content Include="Views\ConjuntoSignosVitales\Edit.cshtml" />
+    <Content Include="Views\ConjuntoSignosVitales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -520,6 +530,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812050502325_IdEmpleado.resx">
       <DependentUpon>201812050502325_IdEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812050836035_CambiarDecimalString.resx">
+      <DependentUpon>201812050836035_CambiarDecimalString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
