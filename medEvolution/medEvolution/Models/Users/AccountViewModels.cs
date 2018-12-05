@@ -62,8 +62,8 @@ namespace medEvolution.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
-    {
+	public class RegisterViewModel
+	{
 		[Required]
 		[Display(Name = "UserRoles")]
 		public string UserRoles { get; set; }
@@ -85,8 +85,8 @@ namespace medEvolution.Models
 
 		[DataType(DataType.Password)]
 		[Display(Name = "Confirm password")]
-		[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")
-
+		[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+		public string ConfirmPassword { get; set; }
 	}
 
     public class ResetPasswordViewModel

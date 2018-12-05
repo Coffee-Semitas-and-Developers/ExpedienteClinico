@@ -140,9 +140,7 @@ namespace medEvolution.Controllers
         public ActionResult Register()
         {
 			
-
-
-			ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+			ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrador"))
 											.ToList(), "Name", "Name");
 			return View();
 		}
@@ -172,7 +170,7 @@ namespace medEvolution.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-				ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(),"Name","Name");
+				ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Administrador")).ToList(),"Name","Name");
 
 				AddErrors(result);
             }
