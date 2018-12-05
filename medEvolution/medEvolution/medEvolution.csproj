@@ -209,8 +209,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicamentosController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\Puesto_De_TrabajoController.cs" />
+    <Compile Include="Controllers\RecetasController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="DAL\DireccionRepository.cs" />
     <Compile Include="DAL\IDireccionRepository.cs" />
@@ -398,6 +400,16 @@
     <Content Include="Views\Puesto_De_Trabajo\Details.cshtml" />
     <Content Include="Views\Puesto_De_Trabajo\Edit.cshtml" />
     <Content Include="Views\Puesto_De_Trabajo\Index.cshtml" />
+    <Content Include="Views\Medicamentos\Create.cshtml" />
+    <Content Include="Views\Medicamentos\Delete.cshtml" />
+    <Content Include="Views\Medicamentos\Details.cshtml" />
+    <Content Include="Views\Medicamentos\Edit.cshtml" />
+    <Content Include="Views\Medicamentos\Index.cshtml" />
+    <Content Include="Views\Recetas\Create.cshtml" />
+    <Content Include="Views\Recetas\Delete.cshtml" />
+    <Content Include="Views\Recetas\Details.cshtml" />
+    <Content Include="Views\Recetas\Edit.cshtml" />
+    <Content Include="Views\Recetas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

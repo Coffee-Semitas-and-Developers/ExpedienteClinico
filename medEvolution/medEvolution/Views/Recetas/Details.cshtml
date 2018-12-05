@@ -1,0 +1,42 @@
+﻿@model MedEvolution.Models.App.Receta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Receta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Sintomatología)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Sintomatología)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medicamento.NombreMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medicamento.NombreMedicamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instrucciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instrucciones)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdReceta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

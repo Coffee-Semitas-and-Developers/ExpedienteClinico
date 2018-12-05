@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MedEvolution.Models.App.Medicamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoMedicamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreMedicamento)
+        </th>
+        <th>Opciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoMedicamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreMedicamento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CodigoMedicamento }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CodigoMedicamento }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CodigoMedicamento })
+        </td>
+    </tr>
+}
+
+</table>
