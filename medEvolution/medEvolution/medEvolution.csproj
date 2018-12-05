@@ -206,6 +206,7 @@
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\DireccionesController.cs" />
+    <Compile Include="Controllers\Especialidad_DesempeniadaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -335,7 +336,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -398,6 +401,11 @@
     <Content Include="Views\Puesto_De_Trabajo\Details.cshtml" />
     <Content Include="Views\Puesto_De_Trabajo\Edit.cshtml" />
     <Content Include="Views\Puesto_De_Trabajo\Index.cshtml" />
+    <Content Include="Views\Especialidad_Desempeniada\Create.cshtml" />
+    <Content Include="Views\Especialidad_Desempeniada\Delete.cshtml" />
+    <Content Include="Views\Especialidad_Desempeniada\Details.cshtml" />
+    <Content Include="Views\Especialidad_Desempeniada\Edit.cshtml" />
+    <Content Include="Views\Especialidad_Desempeniada\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
