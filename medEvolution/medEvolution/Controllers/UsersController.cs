@@ -1,4 +1,7 @@
-﻿using System;
+﻿using medEvolution.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,12 +9,14 @@ using System.Web.Mvc;
 
 namespace medEvolution.Controllers
 {
-    public class UsersController : Controller
-    {	
-		[Authorize]
-        // GET: Users
-        public ActionResult Index()
-        {
+	[Authorize]
+	public class UsersController : Controller
+	{
+		
+		// GET: Users
+		ApplicationDbContext context = new ApplicationDbContext();
+		public ActionResult Index()
+		{
 
 			{
 				if (User.Identity.IsAuthenticated)
@@ -33,7 +38,7 @@ namespace medEvolution.Controllers
 				}
 				return View();
 			}
-    }
+		}
 		public Boolean isAdminUser()
 		{
 			if (User.Identity.IsAuthenticated)
@@ -54,3 +59,4 @@ namespace medEvolution.Controllers
 			return false;
 		}
 	}
+}

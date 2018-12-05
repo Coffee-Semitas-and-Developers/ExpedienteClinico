@@ -40,7 +40,7 @@ namespace medEvolution.Controllers
 				
 				var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 				var s = UserManager.GetRoles(user.GetUserId());
-				if (s[0].ToString() == "Administrador")
+				if (s.ToString() =="Administrador" )
 				{
 					return true;
 				}
