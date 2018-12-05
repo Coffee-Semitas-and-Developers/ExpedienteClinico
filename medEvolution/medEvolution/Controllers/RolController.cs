@@ -21,7 +21,7 @@ namespace medEvolution.Controllers
 
 				if (!isAdminUser())
 				{
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Index", "Rol");
 				}
 			}
 			else
@@ -40,7 +40,7 @@ namespace medEvolution.Controllers
 				
 				var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 				var s = UserManager.GetRoles(user.GetUserId());
-				if (s.ToString() =="Administrador" )
+				if (s[0].ToString() =="Administrador" )
 				{
 					return true;
 				}
