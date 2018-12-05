@@ -1,4 +1,4 @@
-﻿@model MedEvolution.Models.App.Paciente
+﻿@model medEvolution.Models.App.Paciente
 
 @{
     ViewBag.Title = "Crear";
@@ -14,7 +14,6 @@
 <div class="form-horizontal">
     <h4>Paciente</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.CodigoEstado, "CodigoEstado", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

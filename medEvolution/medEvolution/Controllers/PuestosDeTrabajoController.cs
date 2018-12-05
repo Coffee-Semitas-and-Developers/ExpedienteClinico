@@ -40,9 +40,7 @@ namespace medEvolution.Controllers
         // GET: PuestosDeTrabajo/Create
         public ActionResult Create()
         {
-            List<Horario_De_Atencion> horarios = new List<Horario_De_Atencion>();
-            horarios = db.Horario_De_Atencion.ToList();
-            ViewBag.Horario = horarios;
+            ViewBag.Horario = db.Horario_De_Atencion.ToList();
             return View();
         }
 
@@ -59,7 +57,7 @@ namespace medEvolution.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Horario = db.Horario_De_Atencion.ToList();
             ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario", puesto_De_Trabajo.CodigoHorario);
             return View(puesto_De_Trabajo);
         }
@@ -76,6 +74,7 @@ namespace medEvolution.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Horario = db.Horario_De_Atencion.ToList();
             ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario", puesto_De_Trabajo.CodigoHorario);
             return View(puesto_De_Trabajo);
         }
@@ -93,6 +92,7 @@ namespace medEvolution.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Horario = db.Horario_De_Atencion.ToList();
             ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "CodigoHorario", puesto_De_Trabajo.CodigoHorario);
             return View(puesto_De_Trabajo);
         }

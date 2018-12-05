@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -53,9 +54,7 @@ namespace medEvolution.Controllers
         public ActionResult Create()
         {
             ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica");
-            //ViewBag.Departamento = new SelectList(db.Departamento, "CodigoDepartamento", "NombreDep");
             ViewBag.Departamento = db.Departamento.ToList();
-            //ViewBag.Municipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun","CodigoDepartamento",new Departamento (1, "Santa Ana"));
             ViewBag.Municipio = db.Municipio.ToList();
             ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad");
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado");
@@ -68,20 +67,30 @@ namespace medEvolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEmpleado,CodigoPuesto,FechaContratacion,FechaDespido,Jvpm,CodigoEspecialidad,IdClinica,CodigoEstado,Dui,Nombre1,Nombre2,Apellido1,Apellido2,Telefono,Celular,TipoSangre,FechaNac,Sexo,Ocupacion,CorreoElectronico,Alergia,Discapacidad,TipoDiscapacidad,NombreMadre,ApellidoMadre,NombrePadre,ApellidoPadre,EstadoCivil,NombreConyugue,ApellidoConyugue,NombreContactoEmergencia,ApellidoContactoEmergencia,TelefonoContactoEmergencia,CelularContactoEmergencia,Colonia,Pasaje_Calle,Casa")] Empleado empleado)
+        public ActionResult Create(Empleado empleado)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Empleado.Add(empleado);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (true)
+                {
+                    /*db.Direccion.Add(direccion);
+                    empleado.Direccion = direccion;*/
+                    db.Empleado.Add(empleado);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
-            ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica", empleado.IdClinica);
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", empleado.Colonia);
-            ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad", empleado.CodigoEspecialidad);
-            ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", empleado.CodigoEstado);
-            ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto", empleado.CodigoPuesto);
+            catch (DbEntityValidationException e)
+            {
+                ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador. " + e.Message);
+            }
+            
+            ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica");
+            ViewBag.Departamento = db.Departamento.ToList();
+            ViewBag.Municipio = db.Municipio.ToList();
+            ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad");
+            ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado");
+            ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto");
             return View(empleado);
         }
 
@@ -97,11 +106,12 @@ namespace medEvolution.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica", empleado.IdClinica);
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", empleado.Colonia);
-            ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad", empleado.CodigoEspecialidad);
-            ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", empleado.CodigoEstado);
-            ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto", empleado.CodigoPuesto);
+            ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica");
+            ViewBag.Departamento = db.Departamento.ToList();
+            ViewBag.Municipio = db.Municipio.ToList();
+            ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad");
+            ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado");
+            ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto");
             return View(empleado);
         }
 
