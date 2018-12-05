@@ -46,9 +46,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,8 +204,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CitasController.cs" />
+    <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PacientesController.cs" />
+    <Compile Include="Controllers\Puesto_De_TrabajoController.cs" />
+    <Compile Include="Controllers\ValidacionesController.cs" />
+    <Compile Include="DAL\DireccionRepository.cs" />
+    <Compile Include="DAL\IDireccionRepository.cs" />
+    <Compile Include="DAL\IPacienteRepository.cs" />
+    <Compile Include="DAL\PacienteRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +259,26 @@
     <Compile Include="Migrations\201811050621412_Consulta.Designer.cs">
       <DependentUpon>201811050621412_Consulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811052218103_ModeloCita_Modificado.cs" />
+    <Compile Include="Migrations\201811052218103_ModeloCita_Modificado.Designer.cs">
+      <DependentUpon>201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811090154593_201811052218103_ModeloCita_Modificado.cs" />
+    <Compile Include="Migrations\201811090154593_201811052218103_ModeloCita_Modificado.Designer.cs">
+      <DependentUpon>201811090154593_201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811090453244_PuestoDeTrabajo-MedicoRemovido.cs" />
+    <Compile Include="Migrations\201811090453244_PuestoDeTrabajo-MedicoRemovido.Designer.cs">
+      <DependentUpon>201811090453244_PuestoDeTrabajo-MedicoRemovido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811090513436_Cita-MedicoEmpleado.cs" />
+    <Compile Include="Migrations\201811090513436_Cita-MedicoEmpleado.Designer.cs">
+      <DependentUpon>201811090513436_Cita-MedicoEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811100605012_Id_Horario_Automatizado.cs" />
+    <Compile Include="Migrations\201811100605012_Id_Horario_Automatizado.Designer.cs">
+      <DependentUpon>201811100605012_Id_Horario_Automatizado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -256,7 +294,7 @@
     <Compile Include="Models\App\Horario_De_Atencion.cs" />
     <Compile Include="Models\App\MedEvolutionDBContext.cs" />
     <Compile Include="Models\App\Medicamento.cs" />
-    <Compile Include="Models\App\Medico.cs" />
+    <Compile Include="Models\App\Puesto_De_Trabajo.cs" />
     <Compile Include="Models\App\Municipio.cs" />
     <Compile Include="Models\App\OrdenExamen.cs" />
     <Compile Include="Models\App\DetalleExamenes.cs" />
@@ -266,6 +304,9 @@
     <Compile Include="Models\Users\IdentityModels.cs" />
     <Compile Include="Models\Users\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServiciosCita.cs" />
+    <Compile Include="Services\ServiciosHorario_De_Atencion.cs" />
+    <Compile Include="Services\ServiciosPuesto_De_Trabajo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +314,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -328,17 +370,37 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Hora.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Citas\Create.cshtml" />
+    <Content Include="Views\Citas\Index.cshtml" />
     <Content Include="Views\Citas\Delete.cshtml" />
     <Content Include="Views\Citas\Details.cshtml" />
     <Content Include="Views\Citas\Edit.cshtml" />
     <Content Include="Views\Citas\Index.cshtml" />
+    <Content Include="Views\Direcciones\Index.cshtml" />
+    <Content Include="Views\Direcciones\Details.cshtml" />
+    <Content Include="Views\Direcciones\Create.cshtml" />
+    <Content Include="Views\Direcciones\Edit.cshtml" />
+    <Content Include="Views\Direcciones\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Create.cshtml" />
+    <Content Include="Views\Pacientes\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Details.cshtml" />
+    <Content Include="Views\Pacientes\Edit.cshtml" />
+    <Content Include="Views\Pacientes\Index.cshtml" />
+    <Content Include="Views\Clinicas\Create.cshtml" />
+    <Content Include="Views\Clinicas\Delete.cshtml" />
+    <Content Include="Views\Clinicas\Details.cshtml" />
+    <Content Include="Views\Clinicas\Edit.cshtml" />
+    <Content Include="Views\Clinicas\Index.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Create.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Delete.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Details.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Edit.cshtml" />
+    <Content Include="Views\Puesto_De_Trabajo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -383,6 +445,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811050621412_Consulta.resx">
       <DependentUpon>201811050621412_Consulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811052218103_ModeloCita_Modificado.resx">
+      <DependentUpon>201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090154593_201811052218103_ModeloCita_Modificado.resx">
+      <DependentUpon>201811090154593_201811052218103_ModeloCita_Modificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090453244_PuestoDeTrabajo-MedicoRemovido.resx">
+      <DependentUpon>201811090453244_PuestoDeTrabajo-MedicoRemovido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090513436_Cita-MedicoEmpleado.resx">
+      <DependentUpon>201811090513436_Cita-MedicoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811100605012_Id_Horario_Automatizado.resx">
+      <DependentUpon>201811100605012_Id_Horario_Automatizado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

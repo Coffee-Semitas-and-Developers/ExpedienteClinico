@@ -1,6 +1,8 @@
 ﻿@model DateTime?
 
 @{
+    /**/
+
     Layout = "";
 }
 
@@ -9,10 +11,15 @@
     <input type="date" id="@ViewData.TemplateInfo.GetFullHtmlFieldId("")"
            name="@ViewData.TemplateInfo.GetFullHtmlFieldName("")" />
 }
-else
+else if (Model.GetType().Name == "Date")
 {
     <input type="date" value="@Model.Value.ToString("dd/MM/yyyy")"
            id="@ViewData.TemplateInfo.GetFullHtmlFieldId("")"
            name="@ViewData.TemplateInfo.GetFullHtmlFieldName("")" />
 }
-
+else
+{
+    <input type="time" value="@Model.Value.ToString("HH:mm")"
+           id="@ViewData.TemplateInfo.GetFullHtmlFieldId("")"
+           name="@ViewData.TemplateInfo.GetFullHtmlFieldName("")" />
+}

@@ -21,9 +21,10 @@ namespace MedEvolution.Models.App
         public int IdEmpleado { get; set; }
 
         [Required]
-        [StringLength(30)]
-        [Description("Cargo:")]
-        public string Cargo { get; set; }
+        [Column("Puesto_De_Trabajo_CodigoPuesto")]
+        [DisplayName("Cargo")]
+        public int CodigoPuesto { get; set; }
+        public virtual Puesto_De_Trabajo Puesto { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -36,14 +37,14 @@ namespace MedEvolution.Models.App
         [Description("Fecha de despido:")]
         public DateTime? FechaDespido { get; set; }
 
-        [Required]
-        [Description("Salario:")]
-        public double Salario { get; set; }
+        [DisplayName("Jvpm")]
+        [StringLength(10)]
+        public string Jvpm { get; set; }
 
-        [Required]
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public string HorasLaborales { get; set; }
+        [Column("Especialidad_Desempeniada_CodigoEspecialidad")]
+        [DisplayName("Especialidad")]
+        public int CodigoEspecialidad { get; set; }
+        public virtual Especialidad_Desempeniada Especialidad_Desempeniada { get; set; }
 
         [Required]
         [Column("Clinica_IdClinica")]
@@ -57,7 +58,7 @@ namespace MedEvolution.Models.App
         public int CodigoEstado { get; set; }
         public virtual Estado Estado { get; set; }
 
-        //public virtual ICollection<Medico> Medicos { get; set; }
+        public virtual ICollection<Cita> Citas { get; set; }
 
     }
 }

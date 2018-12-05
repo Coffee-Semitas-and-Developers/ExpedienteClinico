@@ -1,0 +1,34 @@
+﻿@model MedEvolution.Models.App.Direccion
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Direccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipio.NombreMun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipio.NombreMun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { ColoniaID = Model.Colonia, Pasaje_CalleID = Model.Pasaje_Calle, CasaID = Model.Casa }, new { @class = "btn btn-warning" }) 
+    @Html.ActionLink("Regresar a la lista", "Index", null, new { @class = "btn btn-primary" })
+</p>

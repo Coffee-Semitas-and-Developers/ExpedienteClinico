@@ -23,7 +23,7 @@ namespace MedEvolution.Models.App
         public DbSet<Empleado> Empleado { get; set; }
         public DbSet<Especialidad_Desempeniada> Especialidad_Desempeniada { get; set; }
         public DbSet<Horario_De_Atencion> Horario_De_Atencion { get; set; }
-        public DbSet<Medico> Medico { get; set; }
+        public DbSet<Puesto_De_Trabajo> PuestoDeTrabajo { get; set; }
         public DbSet<Medicamento> Medicamento { get; set; }
         public DbSet<Receta> Receta { get; set; }
         public DbSet<DetalleExamenes> DetalleExamenes { get; set; }
@@ -83,16 +83,19 @@ namespace MedEvolution.Models.App
             modelBuilder.Entity<Receta>()
                 .HasRequired(e => e.Medicamento);
 
-            modelBuilder.Entity<Medico>()
+            modelBuilder.Entity<Puesto_De_Trabajo>()
+                .HasRequired(e => e.Horario_De_Atencion);
+
+            modelBuilder.Entity<Empleado>()
                 .HasRequired(e => e.Especialidad_Desempeniada)
                 .WithMany(e => e.Medicos)
                 .HasForeignKey(e => e.CodigoEspecialidad)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Medico>()
-                .HasRequired(e => e.Horario_De_Atencion)
-                .WithMany(e => e.Medicos)
-                .HasForeignKey(e => e.CodigoHorario)
+            modelBuilder.Entity<Empleado>()
+                .HasRequired(e => e.Puesto)
+                .WithMany(e => e.Empleados)
+                .HasForeignKey(e => e.CodigoPuesto)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Empleado>()

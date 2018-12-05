@@ -8,22 +8,26 @@ using System.Web;
 
 namespace MedEvolution.Models.App
 {
-    [Table("Medico")]
-    public class Medico: Empleado
+    [Table("PuestoDeTrabajo")]
+    public class Puesto_De_Trabajo
     {
-        public Medico()
+        public Puesto_De_Trabajo()
         {
+
         }
 
         [Key]
-        [DisplayName("JVPM:")]
-        public int Jvpm { get; set; }
+        [DisplayName("Código del Puesto")]
+        public int CodigoPuesto { get; set; }
 
         [Required]
-        [Column("Especialidad_Desempeniada_CodigoEspecialidad")]
-        [DisplayName("Especialidad:")]
-        public int CodigoEspecialidad { get; set; }
-        public virtual Especialidad_Desempeniada Especialidad_Desempeniada { get; set; }
+        [DisplayName("Puesto de Trabajo")]
+        public string NombrePuesto { get; set; }
+
+        [Required]
+        [DataType(DataType.Currency)]
+        [DisplayName("Salario")]
+        public decimal Salario { get; set; }
 
         [Required]
         [Column("Horario_De_Atencion_CodigoHorario")]
@@ -31,7 +35,6 @@ namespace MedEvolution.Models.App
         public int CodigoHorario { get; set; }
         public virtual Horario_De_Atencion Horario_De_Atencion { get; set; }
 
-        public virtual ICollection<Cita> Citas { get; set; }
-
+        public virtual ICollection<Empleado> Empleados { get; set; }
     }
 }

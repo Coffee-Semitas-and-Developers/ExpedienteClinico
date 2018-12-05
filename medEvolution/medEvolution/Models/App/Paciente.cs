@@ -13,6 +13,7 @@ namespace MedEvolution.Models.App
         public Paciente()
         {
             FechaCreacion = DateTime.Now;
+            FechaDeBaja = DateTime.Now;
         }
 
         [Key]
@@ -21,11 +22,11 @@ namespace MedEvolution.Models.App
         public int IdPaciente { get; set; }        
 
         [Required]
-        [ScaffoldColumn(false)]
+        [ScaffoldColumn(false)]//"{0:dd/MMM/yyyy} {0:HH:mm:ss}"
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy} {0:HH:mm:ss}")]
         public DateTime FechaCreacion { get; set; }
 
-        [ScaffoldColumn(false)]
+        [ScaffoldColumn(false)]//"{0:dd/MMM/yyyy} {0:HH:mm:ss}"
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy} {0:HH:mm:ss}")]
         public DateTime FechaDeBaja { get; set; }
 

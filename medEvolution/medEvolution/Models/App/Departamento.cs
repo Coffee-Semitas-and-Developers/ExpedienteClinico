@@ -16,7 +16,7 @@ namespace MedEvolution.Models.App
         }
 
         [Key]
-        [DisplayName("Código Departamento:")]
+        [DisplayName("Código de Departamento:")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CodigoDepartamento { get; set; }
 
