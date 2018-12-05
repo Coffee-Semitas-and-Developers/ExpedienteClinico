@@ -1,4 +1,4 @@
-﻿@model MedEvolution.Models.App.Puesto_De_Trabajo
+﻿@model medEvolution.Models.App.Puesto_De_Trabajo
 
 @{
     ViewBag.Title = "Edit";
@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CodigoHorario, "CodigoHorario", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CodigoHorario", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CodigoHorario", new SelectList(ViewBag.Horario, "CodigoHorario", "Horario"), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CodigoHorario, "", new { @class = "text-danger" })
             </div>
         </div>
