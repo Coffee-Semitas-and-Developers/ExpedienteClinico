@@ -19,7 +19,6 @@ namespace medEvolution.Controllers
         // GET: PuestosDeTrabajo
         public ActionResult Index()
         {
-            ViewBag.Horario = db.Horario_De_Atencion.ToList() as IEnumerable<Horario_De_Atencion>;
             return View(Puestos.ToList());
         }
 
@@ -41,7 +40,9 @@ namespace medEvolution.Controllers
         // GET: PuestosDeTrabajo/Create
         public ActionResult Create()
         {
-            ViewBag.CodigoHorario = new SelectList(db.Horario_De_Atencion, "CodigoHorario", "Horario");
+            List<Horario_De_Atencion> horarios = new List<Horario_De_Atencion>();
+            horarios = db.Horario_De_Atencion.ToList();
+            ViewBag.Horario = horarios;
             return View();
         }
 

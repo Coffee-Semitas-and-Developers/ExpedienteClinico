@@ -16,7 +16,6 @@ namespace MedEvolution.Models.App
         {
             //CrearHorario(new Horario_De_Atencion());
             ContarHorasLaborales();
-            GetHorario();
         }
 
         [Key]
@@ -57,8 +56,8 @@ namespace MedEvolution.Models.App
         [DisplayName("Horario")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm} - {0:HH:mm}")]
-        public string Horario { get; set; }
-        
+        public string Horario => HoraInicio.ToString(@"hh\:mm") + " - " + HoraFin.ToString(@"hh\:mm");
+
         public virtual ICollection<Puesto_De_Trabajo> Puestos { get; set; }
 
         public void CrearHorario(Horario_De_Atencion hora)
@@ -76,11 +75,6 @@ namespace MedEvolution.Models.App
         public void ContarHorasLaborales()
         {
            HorasLaborales = HoraFin.Subtract(HoraInicio);
-        }
-
-        public void GetHorario()
-        {
-            Horario = HoraInicio.Hours.ToString() + "-" + HoraFin.Hours.ToString();
         }
 
     }
