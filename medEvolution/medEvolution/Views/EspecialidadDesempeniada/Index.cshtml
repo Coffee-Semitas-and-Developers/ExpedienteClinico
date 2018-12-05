@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Especialidad Desempeñada</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -22,12 +20,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.NombreEspecialidad)
         </td>
+        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoEspecialidad }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodigoEspecialidad }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoEspecialidad })
+            @Html.ActionLink(" ", "Edit", new { id = item.CodigoEspecialidad }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.CodigoEspecialidad }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.CodigoEspecialidad }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
         </td>
     </tr>
 }
 
 </table>
+
+<p>
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nueva especialidad" })
+</p>

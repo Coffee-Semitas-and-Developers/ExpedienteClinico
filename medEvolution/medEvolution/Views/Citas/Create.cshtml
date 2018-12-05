@@ -1,10 +1,10 @@
-﻿@model MedEvolution.Models.App.Cita
+﻿@model medEvolution.Models.App.Cita
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Nueva Cita</h2>
+<h2>Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -57,14 +57,14 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Crear" class="btn btn-info" />
+            <input type="submit" value="Crear" class="btn btn-success" />
         </div>
     </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index","","",htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
 </div>
 
 @section Scripts {

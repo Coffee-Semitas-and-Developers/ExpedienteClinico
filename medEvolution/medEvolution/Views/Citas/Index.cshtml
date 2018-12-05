@@ -6,9 +6,7 @@
 
 <h2>Citas</h2>
 
-<p>
-    @Html.ActionLink("Nueva Cita", "Create","", htmlAttributes: new { @class = "btn btn-primary"})
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -48,12 +46,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Estado.NombreEstado)
         </td>
+       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IdCita }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil"}) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdCita }, htmlAttributes: new { @class = "glyphicon glyphicon-list" }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdCita }, htmlAttributes: new { @class = "glyphicon glyphicon-trash" })
+            @Html.ActionLink(" ", "Edit", new { id = item.IdCita }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.IdCita }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.IdCita }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
         </td>
     </tr>
 }
 
 </table>
+
+<p>
+    @Html.ActionLink(" ", "Create", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-plus", @title = "Nueva cita" })
+</p>

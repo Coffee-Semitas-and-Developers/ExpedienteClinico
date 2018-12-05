@@ -1,10 +1,10 @@
-﻿@model MedEvolution.Models.App.Clinica
+﻿@model medEvolution.Models.App.Clinica
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalle</h2>
 
 <div>
     <h4>Clinica</h4>
@@ -52,7 +52,9 @@
 
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdClinica }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
+    @Html.ActionLink(" ", "Edit", new { id = Model.IdClinica }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil btn btn-warning", @title = "Editar" })
 </p>
+

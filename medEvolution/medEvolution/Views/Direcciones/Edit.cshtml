@@ -1,4 +1,4 @@
-﻿@model MedEvolution.Models.App.Direccion
+﻿@model medEvolution.Models.App.Direccion
 
 @{
     ViewBag.Title = "Editar";
@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Direccion</h4>
         <hr />
@@ -39,14 +39,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-info" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Regresar a la lista", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
 </div>
 
 @section Scripts {
