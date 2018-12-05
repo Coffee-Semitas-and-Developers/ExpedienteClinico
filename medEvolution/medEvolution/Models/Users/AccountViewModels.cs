@@ -48,12 +48,12 @@ namespace medEvolution.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Correo electrónico")]
-        [EmailAddress]
-        public string Email { get; set; }
+		[Required]
+		[Display(Name = "UserName")]
 
-        [Required]
+		public string UserName { get; set; }
+
+		[Required]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
