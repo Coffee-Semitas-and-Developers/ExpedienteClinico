@@ -9,9 +9,10 @@ namespace medEvolution.Migrations
         {
             DropForeignKey("dbo.Medico", "Empleado_IdEmpleado", "dbo.Empleado");
             DropIndex("dbo.Medico", new[] { "Empleado_IdEmpleado" });
-            
-            
-        }
+			DropColumn("dbo.Cita", "Hora");
+			DropColumn("dbo.Medico", "Empleado_IdEmpleado");
+
+		}
         
         public override void Down()
         {
