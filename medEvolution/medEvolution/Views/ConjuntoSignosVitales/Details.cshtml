@@ -1,0 +1,58 @@
+﻿@model medEvolution.Models.App.ConjuntoSignosVitales
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ConjuntoSignosVitales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PresionArterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PresionArterial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Temperatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Temperatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PulsoCardiaco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PulsoCardiaco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatura)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdSignos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -20,8 +20,8 @@ namespace medEvolution.Models.App
         public int IdSignos { get; set; }
 
         [Required]
-        [DisplayName("Presión Arterial")]
-        public decimal PresionArterial { get; set; }
+        [DisplayName("Presiï¿½n Arterial:")]
+        public string PresionArterial { get; set; }
 
         [Required]
         [DisplayName("Temperatura")]
@@ -41,5 +41,3 @@ namespace medEvolution.Models.App
 
     }
 }
-    
-

@@ -1,0 +1,64 @@
+﻿@model medEvolution.Models.App.ConjuntoSignosVitales
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ConjuntoSignosVitales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PresionArterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PresionArterial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Temperatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Temperatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PulsoCardiaco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PulsoCardiaco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatura)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

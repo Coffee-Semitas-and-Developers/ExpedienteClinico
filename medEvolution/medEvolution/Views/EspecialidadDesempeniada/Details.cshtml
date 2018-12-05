@@ -1,0 +1,26 @@
+﻿@model medEvolution.Models.App.Especialidad_Desempeniada
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Especialidad_Desempeniada</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreEspecialidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreEspecialidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodigoEspecialidad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
