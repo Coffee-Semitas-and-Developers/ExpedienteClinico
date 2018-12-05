@@ -14,7 +14,7 @@ namespace MedEvolution.Models.App
     {
         public Horario_De_Atencion()
         {
-            //CrearHorario();
+            //CrearHorario(new Horario_De_Atencion());
             ContarHorasLaborales();
             GetHorario();
         }
@@ -27,57 +27,60 @@ namespace MedEvolution.Models.App
         [Required]
         [DisplayName("Hora de entrada")]
         [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:HH:mm}")]
-        public DateTime HoraInicio { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
+        public TimeSpan HoraInicio { get; set; }
 
         [Required]
         [DisplayName("Hora Salida")]
         [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:HH:mm}")]
-        public DateTime HoraFin { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
+        public TimeSpan HoraFin { get; set; }
 
         [DisplayName("Cantidad de consultas a brindar")]
         [Remote("NumeroDeCitas", "Validaciones", ErrorMessage = "El número de citas no puede ser menor a cero")]
+        [Range(1, 100, ErrorMessage = "Las consultas deben estar entre 1 y 100")]
         public int? NumeroCitasAtender { get; set; }
 
         [NotMapped]
         [DisplayName("Número de Horas Laborales")]
         [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public DateTime HorasLaborales { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
+        public TimeSpan HorasLaborales { get; set; }
 
         [NotMapped]
         [DisplayName("Horarios")]
         [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public DateTime Horarios { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
+        public List<string> Horarios { get; set; }
 
         [NotMapped]
         [DisplayName("Horario")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm} - {0:HH:mm}")]
         public string Horario { get; set; }
-
-
+        
         public virtual ICollection<Puesto_De_Trabajo> Puestos { get; set; }
 
-        /*public void CrearHorario()
+        public void CrearHorario(Horario_De_Atencion hora)
         {
-            while (HoraInicio <= HoraFin)
+            TimeSpan tiempo = hora.HoraInicio;
+            TimeSpan tiempoConsulta = new TimeSpan(0, 30, 0);
+
+            while (hora.HoraInicio <= hora.HoraFin)
             {
-                Horarios.Add(TimeSpan.Parse(HoraInicio.AddMinutes(30).ToString()));
+                hora.Horarios.Add(tiempo.Add(tiempoConsulta).ToString());
                 
             }
-        }*/
+        }
 
         public void ContarHorasLaborales()
         {
-           HorasLaborales = DateTime.Parse(HoraFin.Subtract(HoraInicio).ToString());
+           HorasLaborales = HoraFin.Subtract(HoraInicio);
         }
 
         public void GetHorario()
         {
-            Horario = HoraInicio.Hour.ToString() + "-" + HoraFin.Hour.ToString();
+            Horario = HoraInicio.Hours.ToString() + "-" + HoraFin.Hours.ToString();
         }
 
     }
