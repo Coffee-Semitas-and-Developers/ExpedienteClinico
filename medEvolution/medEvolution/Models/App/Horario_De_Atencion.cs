@@ -7,14 +7,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MedEvolution.Models.App
+namespace medEvolution.Models.App
 {
     [Table("HorarioDeAtencion")]
     public class Horario_De_Atencion
     {
         public Horario_De_Atencion()
         {
-            //CrearHorario(new Horario_De_Atencion());
             ContarHorasLaborales();
         }
 

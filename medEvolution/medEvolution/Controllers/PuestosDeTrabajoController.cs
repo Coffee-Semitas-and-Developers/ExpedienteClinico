@@ -6,8 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MedEvolution.Models.App;
-using MedEvolution.Services;
+using medEvolution.Models.App;
+using medEvolution.Services;
 
 namespace medEvolution.Controllers
 {

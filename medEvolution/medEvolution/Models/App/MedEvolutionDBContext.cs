@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Web;
 
-namespace MedEvolution.Models.App
+namespace medEvolution.Models.App
 {
     public class MedEvolutionDbContext : DbContext
     {

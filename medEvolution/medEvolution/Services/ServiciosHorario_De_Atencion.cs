@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MedEvolution.Models.App;
+using medEvolution.Models.App;
 
-namespace MedEvolution.Services
+namespace medEvolution.Services
 {
     public class ServiciosHorario_De_Atencion
     {

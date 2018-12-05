@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MedEvolution.Controllers.Validaciones
+namespace medEvolution.Controllers.Validaciones
 {
     public class ValidacionesController : Controller
     {

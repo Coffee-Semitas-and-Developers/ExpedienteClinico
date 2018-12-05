@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 
-namespace MedEvolution.Models.App
+namespace medEvolution.Models.App
 {
     [Table("Receta")]
     public class Receta

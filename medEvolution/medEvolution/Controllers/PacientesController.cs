@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using medEvolution.DAL;
-using MedEvolution.Models.App;
+using medEvolution.Models.App;
 
 namespace medEvolution.Controllers
 {

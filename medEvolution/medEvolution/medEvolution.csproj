@@ -212,7 +212,7 @@
     <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
-    <Compile Include="Controllers\Puesto_De_TrabajoController.cs" />
+    <Compile Include="Controllers\PuestosDeTrabajoController.cs" />
     <Compile Include="Controllers\ValidacionesController.cs" />
     <Compile Include="DAL\DireccionRepository.cs" />
     <Compile Include="DAL\IDireccionRepository.cs" />
