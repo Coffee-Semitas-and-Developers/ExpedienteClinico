@@ -39,7 +39,7 @@ namespace MedEvolution.Models.App
         [ScaffoldColumn(false)]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public DateTime Hora { get; set; }
+        public TimeSpan Hora { get; set; }
 
         [Required]
         [StringLength(100)]

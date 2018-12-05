@@ -29,7 +29,7 @@ namespace MedEvolution.Services
 
         public void ContarHorasLaborales()
         {
-            Horario.HorasLaborales = DateTime.Parse(Horario.HoraFin.Subtract(Horario.HoraInicio).TotalHours.ToString());
+            Horario.HorasLaborales = Horario.HoraFin.Subtract(Horario.HoraInicio);
         }
     }
 }
