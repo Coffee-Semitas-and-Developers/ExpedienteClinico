@@ -8,7 +8,7 @@ namespace medEvolution.Models.App
 {
     public class MedEvolutionDbContext : DbContext
     {
-        public MedEvolutionDbContext()
+        public MedEvolutionDbContext() : base("name=DbContextLocal")
         {
 
         }
