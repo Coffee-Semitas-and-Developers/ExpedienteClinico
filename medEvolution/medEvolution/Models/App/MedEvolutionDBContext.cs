@@ -137,5 +137,10 @@ namespace medEvolution.Models.App
 
         }
 
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
+        {
+            return base.Set<TEntity>();
+        }
+
     }
 }

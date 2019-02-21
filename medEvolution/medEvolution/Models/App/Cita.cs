@@ -29,7 +29,7 @@ namespace medEvolution.Models.App
         public DateTime FechaCreada { get; set; }
 
 
-        [Required(ErrorMessage ="La Fecha no debe ser inferior a la fecha acutal")]
+        [Required(ErrorMessage ="Es necesaria la hora de la cita")]
         [DisplayName("Fecha de la cita")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString = "{0:dd/MMM/ yyyy}")]
