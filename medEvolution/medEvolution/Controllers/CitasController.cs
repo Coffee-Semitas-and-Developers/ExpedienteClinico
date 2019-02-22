@@ -14,12 +14,11 @@ namespace medEvolution.Controllers
     public class CitasController : Controller
     {
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
-        private ServiciosCita Cita = new ServiciosCita();
 
         // GET: Citas
         public ActionResult Index()
         {
-            return View(Cita.ToList());
+            return View();
         }
 
         // GET: Citas/Details/5

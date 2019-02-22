@@ -1,4 +1,5 @@
-﻿using System;
+﻿using medEvolution.Models.App;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace medEvolution.Data
         /// https://www.c-sharpcorner.com/article/repository-and-unity-of-work-pattern-in-mvc/
         /// </summary>
 
-        public readonly DbContext _context; //Public dado que necesito acceder desde el Repository para conocer la Entity que usa la clase
+        public readonly MedEvolutionDbContext _context; //Public dado que necesito acceder desde el Repository para conocer la Entity que usa la clase
         
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(MedEvolutionDbContext context)
         {
             _context = context;
         }

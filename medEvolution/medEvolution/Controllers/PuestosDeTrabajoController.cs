@@ -14,12 +14,11 @@ namespace medEvolution.Controllers
     public class PuestosDeTrabajoController : Controller
     {
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
-        private ServiciosPuesto_De_Trabajo Puestos = new ServiciosPuesto_De_Trabajo();
 
         // GET: PuestosDeTrabajo
         public ActionResult Index()
         {
-            return View(Puestos.ToList());
+            return View();
         }
 
         // GET: PuestosDeTrabajo/Details/5

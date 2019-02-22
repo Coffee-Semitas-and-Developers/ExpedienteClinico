@@ -112,6 +112,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -309,7 +312,7 @@
     <Compile Include="Models\App\Departamento.cs" />
     <Compile Include="Models\App\Direccion.cs" />
     <Compile Include="Models\App\Empleado.cs" />
-    <Compile Include="Models\App\Especialidad_Desempeñada.cs" />
+    <Compile Include="Models\App\Especialidad_Desempeniada.cs" />
     <Compile Include="Models\App\Estado.cs" />
     <Compile Include="Models\App\Examen.cs" />
     <Compile Include="Models\App\Horario_De_Atencion.cs" />
@@ -325,9 +328,25 @@
     <Compile Include="Models\Users\IdentityModels.cs" />
     <Compile Include="Models\Users\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ServiciosCita.cs" />
-    <Compile Include="Services\ServiciosHorario_De_Atencion.cs" />
-    <Compile Include="Services\ServiciosPuesto_De_Trabajo.cs" />
+    <Compile Include="Services\DepartamentoService.cs" />
+    <Compile Include="Services\DireccionService.cs" />
+    <Compile Include="Services\EmpleadoService.cs" />
+    <Compile Include="Services\ICitaService.cs" />
+    <Compile Include="Services\IClinicaService.cs" />
+    <Compile Include="Services\IConjuntoSignosVitalesService.cs" />
+    <Compile Include="Services\IConsultaService.cs" />
+    <Compile Include="Services\IDepartamentoService.cs" />
+    <Compile Include="Services\IDetalleExamenesService.cs" />
+    <Compile Include="Services\IDireccionService.cs" />
+    <Compile Include="Services\IEmpleadoService.cs" />
+    <Compile Include="Services\IEspecialidadDesempeniadaService.cs" />
+    <Compile Include="Services\IHorarioDeAtencionService.cs" />
+    <Compile Include="Services\IMunicipioService.cs" />
+    <Compile Include="Services\IOrdenExamenService.cs" />
+    <Compile Include="Services\IPacienteService.cs" />
+    <Compile Include="Services\IPuestoDeTrabajoService.cs" />
+    <Compile Include="Services\IRecetaService.cs" />
+    <Compile Include="Services\MunicipioService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

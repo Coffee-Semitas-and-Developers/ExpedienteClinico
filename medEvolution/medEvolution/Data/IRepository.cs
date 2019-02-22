@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace medEvolution.Data
 {
-    public interface IRepository<T1, T2> where T1 : class
+    public interface IRepository<T1> where T1 : class
     {
         /// <summary>
         /// Hemos comenzado a implementar el Patrón Repositorio Genérico

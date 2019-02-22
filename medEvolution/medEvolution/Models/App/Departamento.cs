@@ -33,27 +33,6 @@ namespace medEvolution.Models.App
         public string NombreDep { get; set; }
 
         public virtual ICollection<Municipio> Municipios { get; set; }
-
-        public IEnumerable<SelectListItem> GetMunicipios(int cod)
-        {
-            if (cod!=0)
-            {
-                using (var context = new MedEvolutionDbContext())
-                {
-                    IEnumerable<SelectListItem> municipios = context.Municipio.AsNoTracking()
-                        .OrderBy(n => n.CodigoDepartamento)
-                        .Where(n => n.CodigoDepartamento == cod)
-                        .Select(n =>
-                           new SelectListItem
-                           {
-                               Value = n.CodigoMunicipio.ToString(),
-                               Text = n.NombreMun
-                           }).ToList();
-                    return new SelectList(municipios, "Value", "Text");
-                }
-            }
-            return null;
-        }
     }
 
 }

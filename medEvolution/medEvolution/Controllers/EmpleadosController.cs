@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using medEvolution.Data;
 using medEvolution.Models.App;
+using medEvolution.Services;
 
 namespace medEvolution.Controllers
 {
     public class EmpleadosController : Controller
     {
-        private MedEvolutionDbContext db = new MedEvolutionDbContext();
+        private readonly UnitOfWork _unit = new UnitOfWork(new MedEvolutionDbContext());
+        private IMunicipioService _municipioService;
+        private IEmpleadoService _empleadoService;
+        private readonly MedEvolutionDbContext db = new MedEvolutionDbContext();
+
+        public EmpleadosController(MunicipioService municipioService)
+        {
+            this._municipioService = municipioService;
+        }
 
         // GET: Empleados
         public ActionResult Index()
@@ -27,9 +34,7 @@ namespace medEvolution.Controllers
         {
             if (cod!=0)
             {
-                var repo = new Departamento();
-
-                IEnumerable<SelectListItem> municipios = repo.GetMunicipios(cod);
+                IEnumerable<SelectListItem> municipios = _municipioService.GetMunicipiosByDepart(cod);
                 return Json(municipios, JsonRequestBehavior.AllowGet);
             }
             return null;

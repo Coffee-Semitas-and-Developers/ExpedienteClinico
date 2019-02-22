@@ -7,7 +7,7 @@ using System.Web;
 
 namespace medEvolution.Data
 {
-    public class Repository<T1, T2> : IRepository<T1, T2> where T1 : class
+    public class Repository<T1> : IRepository<T1> where T1 : class
     {
         /// <summary>
         /// Implementacion y definicion de métodos genéricos para el CRUD de nuestra aplicación
