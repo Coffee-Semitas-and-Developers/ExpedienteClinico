@@ -12,9 +12,15 @@ namespace medEvolution.Models.App
     [Table("Direccion")]
     public class Direccion
     {
+        public Direccion(string Col, string p_c, string casa)
+        {
+            Colonia = Col;
+            Pasaje_Calle = p_c;
+            Casa = casa;         
+        }
+
         public Direccion()
         {
-            DireccionCompleta = Colonia + Pasaje_Calle + Casa;
         }
 
         [Key]
@@ -32,7 +38,7 @@ namespace medEvolution.Models.App
         [Key]
         [Column(Order = 2)]
         [StringLength(30)]
-        [DisplayName("Casa:")]
+        [DisplayName("Casa o Local:")]
         public string Casa { get; set; }
 
         [StringLength(50)]
@@ -47,7 +53,14 @@ namespace medEvolution.Models.App
         //String para tener una sola linea de direccion
         [NotMapped]
         [DisplayName("Dirección:")]
-        public string DireccionCompleta { get; set; }
+        public string DireccionCompleta {
+            get {
+                return Colonia + " " + Pasaje_Calle + " " + Casa;
+            }
+            set {
+                
+            }
+        }
 
     }
 }

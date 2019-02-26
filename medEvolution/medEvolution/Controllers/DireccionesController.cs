@@ -37,7 +37,7 @@ namespace medEvolution.Controllers
         public ActionResult Create()//GET
         {
             ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun");
-            return View(new Direccion());
+            return View();
         }
 
         [HttpPost]

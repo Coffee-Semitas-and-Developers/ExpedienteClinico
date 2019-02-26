@@ -117,6 +117,18 @@ namespace medEvolution.Data
             }
         }
 
+        public T1 GetbyId(string s1, string s2, string s3)
+        {
+            try
+            {
+                return this.Entity.Find(s1,s2,s3);
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw Excepcion(dbEx);
+            }
+        }
+
         /// <summary>
         /// Devuelve las excepciones que puedan presentar en las Entities y que se obtienen en el Catch
         /// </summary>

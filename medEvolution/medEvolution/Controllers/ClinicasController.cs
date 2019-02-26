@@ -7,18 +7,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using medEvolution.Models.App;
+using medEvolution.Services;
+using medEvolution.Data;
 
 namespace medEvolution.Controllers
 {
     public class ClinicasController : Controller
     {
+        private readonly IClinicaService _clinicaService;
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
+
+        public ClinicasController(ClinicaService clinicaService)
+        {
+            _clinicaService = clinicaService;
+        }
 
         // GET: Clinicas
         public ActionResult Index()
         {
-            var clinica = db.Clinica.Include(c => c.Direccion);
-            return View(clinica.ToList());
+            return View(_clinicaService.GetAll());
         }
 
         // GET: Clinicas/Details/5
@@ -28,7 +35,7 @@ namespace medEvolution.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clinica clinica = db.Clinica.Find(id);
+            Clinica clinica = _clinicaService.GetById(id.Value);
             if (clinica == null)
             {
                 return HttpNotFound();
@@ -37,6 +44,7 @@ namespace medEvolution.Controllers
         }
 
         // GET: Clinicas/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia");
@@ -105,16 +113,7 @@ namespace medEvolution.Controllers
         // GET: Clinicas/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clinica clinica = db.Clinica.Find(id);
-            if (clinica == null)
-            {
-                return HttpNotFound();
-            }
-            return View(clinica);
+            return Details(id);
         }
 
         // POST: Clinicas/Delete/5
@@ -122,19 +121,17 @@ namespace medEvolution.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Clinica clinica = db.Clinica.Find(id);
-            db.Clinica.Remove(clinica);
-            db.SaveChanges();
+            _clinicaService.Delete(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        /*protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

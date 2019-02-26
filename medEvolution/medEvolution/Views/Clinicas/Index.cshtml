@@ -24,6 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Pasaje_Calle)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Casa)
+        </th>
         <th></th>
     </tr>
 
@@ -44,7 +47,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Pasaje_Calle)
         </td>
-       
+        <td>
+            @Html.DisplayFor(modelItem => item.Casa)
+        </td>
+
         <td>
             @Html.ActionLink(" ", "Edit", new { id = item.IdClinica }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
             @Html.ActionLink(" ", "Details", new { id = item.IdClinica }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |

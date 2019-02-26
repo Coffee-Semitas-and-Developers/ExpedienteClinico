@@ -18,7 +18,7 @@ namespace medEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [DisplayName("Identificador clínica:")]
+        [DisplayName("Sucursal:")]
         public int IdClinica { get; set; }
 
         [Required]
