@@ -42,13 +42,13 @@ namespace medEvolution.Controllers
             return View(_direccionService.GetAll());
         }
 
-        public ActionResult Details(string ColoniaID, string Pasaje_CalleID, string CasaID)
+        public ActionResult Details(int? id)
         {
-            if (ColoniaID == null && Pasaje_CalleID== null && CasaID == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Direccion direccion = _direccionService.GetById(ColoniaID, Pasaje_CalleID, CasaID);
+            Direccion direccion = _direccionService.GetById(id.Value);
             if (direccion == null)
             {
                 return HttpNotFound();
@@ -65,7 +65,7 @@ namespace medEvolution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio")] Direccion direccion)//POST
+        public ActionResult Create([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio,CodigoDepartamento")] Direccion direccion)//POST
         {
             try
             {
@@ -85,18 +85,17 @@ namespace medEvolution.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(string ColoniaID, string Pasaje_CalleID, string CasaID, int? dep)//GET
+        public ActionResult Edit(int? id)//GET
         {
-            if (ColoniaID == null && Pasaje_CalleID == null && CasaID == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Direccion direccion = _direccionService.GetById(ColoniaID, Pasaje_CalleID, CasaID);
+            Direccion direccion = _direccionService.GetById(id.Value);
             if (direccion == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SelectedDepartamento = dep.Value;
             ViewBag.Departamento = _departamentoService.GetDepartamentos();
             ViewBag.Municipio = _municipioService.GetMunicipiosByDepart(direccion.Municipio.CodigoDepartamento);
             return View(direccion);
@@ -104,7 +103,7 @@ namespace medEvolution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio")]Direccion direccion)//POST
+        public ActionResult Edit([Bind(Include = "Id,Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio,CodigoDepartamento")]Direccion direccion)//POST
         {
             try
             {
@@ -118,27 +117,27 @@ namespace medEvolution.Controllers
             {
                 ModelState.AddModelError(ex.Data.ToString(), "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
             }
-            ViewBag.SelectedDepartamento = _municipioService.GetCodDepartamento(direccion.CodigoMunicipio);
             ViewBag.Departamento = _departamentoService.GetDepartamentos();
             ViewBag.Municipio = _municipioService.GetMunicipiosEmpty();
             return View(direccion);
         }
 
-        public ActionResult Delete(string ColoniaID, string Pasaje_CalleID, string CasaID)
+        public ActionResult Delete(int? id)
         {
-            return Details(ColoniaID, Pasaje_CalleID, CasaID);
+            return Details(id.Value);
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string ColoniaID, string Pasaje_CalleID, string CasaID)
+        public ActionResult DeleteConfirmed(int id)
         {
             try
             {
-                _direccionService.Delete(_direccionService.GetById(ColoniaID,Pasaje_CalleID,CasaID));
+                _direccionService.Delete(_direccionService.GetById(id));
             }
-            catch (DataException)
+            catch (DbEntityValidationException ex)
             {
-                return RedirectToAction("Delete", new System.Web.Routing.RouteValueDictionary { { "Colonia", ColoniaID },{ "Pasaje_Calle", Pasaje_CalleID},{ "Casa", CasaID}, { "saveChangesError", true } });
+                ModelState.AddModelError(ex.Data.ToString(), "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
+                return RedirectToAction("Delete", new System.Web.Routing.RouteValueDictionary { { "Id", id }, { "saveChangesError", true } });
             }
             return RedirectToAction("Index");
         }

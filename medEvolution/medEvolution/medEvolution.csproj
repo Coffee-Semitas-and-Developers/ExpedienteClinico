@@ -317,6 +317,10 @@
     <Compile Include="Migrations\201902272153165_Clinica_DatabaseGeneration_To_Identity.Designer.cs">
       <DependentUpon>201902272153165_Clinica_DatabaseGeneration_To_Identity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903032212256_Modificacio_Modelo-Direccion.cs" />
+    <Compile Include="Migrations\201903032212256_Modificacio_Modelo-Direccion.Designer.cs">
+      <DependentUpon>201903032212256_Modificacio_Modelo-Direccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -574,6 +578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902272153165_Clinica_DatabaseGeneration_To_Identity.resx">
       <DependentUpon>201902272153165_Clinica_DatabaseGeneration_To_Identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903032212256_Modificacio_Modelo-Direccion.resx">
+      <DependentUpon>201903032212256_Modificacio_Modelo-Direccion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,6 @@ namespace medEvolution.Data
 
         IEnumerable<T1> GetAll();
         T1 GetById(object id);
-        T1 GetById(string s1, string s2, string s3);
         void Insert(T1 entity);
         void Update(T1 entity);
         void Delete(object id);

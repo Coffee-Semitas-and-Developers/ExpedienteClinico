@@ -135,19 +135,9 @@ namespace medEvolution.Models.App
         public string CelularContactoEmergencia { get; set; }
 
         [Required]
-        [Column("Direccion_Colonia")]
-        [DisplayName("Colonia, Barrio, Residencial o Comunidad:")]
-        public string Colonia { get; set; }
-
-        [Required]
-        [Column("Direccion_Pasaje_Calle")]
-        [DisplayName("Pasaje, Calle o Bloque")]
-        public string Pasaje_Calle { get; set; }
-
-        [Required]
-        [Column("Direccion_Casa")]
-        [DisplayName("Número de casa")]
-        public string Casa { get; set; }
+        [Column("Direccion_Id")]
+        [DisplayName("Dirección")]
+        public int Id { get; set; }
 
         public virtual Direccion Direccion { get; set; }
 

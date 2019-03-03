@@ -10,10 +10,10 @@ namespace medEvolution.Services
     interface IDireccionService
     {
         IEnumerable<Direccion> GetAll();
-        Direccion GetById(string Colonia,string Pasaje_Calle, string Casa);
+        Direccion GetById(int id);
         void Insert(Direccion entity);
         void Update(Direccion entity);
-        void Delete(string Colonia, string Pasaje_Calle, string Casa);
+        void Delete(int id);
         void Delete(Direccion dir);
     }
 }

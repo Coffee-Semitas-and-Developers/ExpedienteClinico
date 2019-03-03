@@ -39,19 +39,9 @@ namespace medEvolution.Models.App
         public DateTime FechaApertura { get; set; }
 
         [Required]
-        [Column("Direccion_Colonia")]
-        [DisplayName("Colonia:")]
-        public string Colonia { get; set; }
-
-        [Required]
-        [Column("Direccion_Pasaje_Calle")]
-        [DisplayName("Pasaje/Calle/Bloque:")]
-        public string Pasaje_Calle { get; set; }
-
-        [Required]
-        [Column("Direccion_Casa")]
-        [DisplayName("Casa:")]
-        public string Casa { get; set; }
+        [Column("Direccion_Id")]
+        [DisplayName("Dirección")]
+        public int Id { get; set; }
 
         public virtual Direccion Direccion { get; set; }
 

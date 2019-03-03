@@ -25,9 +25,11 @@ namespace medEvolution.Models.App
         [StringLength(30)]
         public string NombreMun { get; set; }
 
-        [Column("Departamento_CodigoDepartamento")]
         [DisplayName("Departamento")]
+        [Key, Column("Departamento_CodigoDepartamento")]
         public int CodigoDepartamento { get; set; }
+
+        [ForeignKey("CodigoDepartamento")]
         public virtual Departamento Departamento { get; set; }
 
         public virtual ICollection<Direccion> Direcciones { get; set; }

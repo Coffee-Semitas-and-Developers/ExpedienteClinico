@@ -88,9 +88,6 @@ namespace medEvolution.Controllers
             {
                 ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
             }
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia", paciente.Colonia);
-            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle", paciente.Pasaje_Calle);
-            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa", paciente.Casa);
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", paciente.CodigoEstado);
             return View(paciente);
         }
@@ -131,9 +128,6 @@ namespace medEvolution.Controllers
             {
                 ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
             }
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia", paciente.Colonia);
-            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle", paciente.Pasaje_Calle);
-            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa", paciente.Casa);
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", paciente.CodigoEstado);
             return View(paciente);
         }

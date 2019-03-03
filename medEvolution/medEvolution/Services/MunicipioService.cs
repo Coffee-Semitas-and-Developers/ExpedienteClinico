@@ -26,15 +26,16 @@ namespace medEvolution.Services
        
         public IEnumerable<SelectListItem> GetMunicipiosEmpty()
         {
-            List<SelectListItem> municipios = new List<SelectListItem>()
+            /*List<SelectListItem> municipios = new List<SelectListItem>()
             {
                 new SelectListItem
                 {
                     Value = null,
-                    Text = " "
+                    Text = "---Seleccione Municipio---"
                 }
-            };
-            return municipios;
+            };*/
+            //return municipios;
+            return GetMunicipiosByDepart(1);
         }
 
         public IEnumerable<Municipio> GetMunicipios()

@@ -24,7 +24,6 @@ namespace medEvolution.Services
             var clinic = _repositoryClinica.GetById(id);
             //var clinic = GetById(id);
             //_direccionService.Delete(clinic.Direccion);
-            _direccionService.Delete(clinic.Colonia,clinic.Pasaje_Calle,clinic.Casa);
             _repositoryClinica.Delete(id);
             
         }

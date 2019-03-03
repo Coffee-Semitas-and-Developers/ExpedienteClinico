@@ -125,11 +125,15 @@ namespace medEvolution.Models.App
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Municipio>()
-                .HasRequired(e => e.Departamento);
+                .HasKey(e => new { e.CodigoMunicipio, e.CodigoDepartamento})
+                .HasRequired(e => e.Departamento)
+                .WithMany(e => e.Municipios)
+                .HasForeignKey(e => e.CodigoDepartamento);
 
             modelBuilder.Entity<Direccion>()
                .HasRequired(e => e.Municipio)
                .WithMany(e => e.Direcciones)
+               .HasForeignKey(t => new {t.CodigoMunicipio, t.CodigoDepartamento })
                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Clinica>()

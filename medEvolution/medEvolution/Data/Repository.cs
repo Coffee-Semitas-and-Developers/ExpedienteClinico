@@ -132,24 +132,12 @@ namespace medEvolution.Data
                 {
                     throw new ArgumentNullException("entity");
                 }
-                //this._unit._context.Entry(entity).State = EntityState.Modified;
-                this._unit.SaveChanges(entity);
+                this._unit._context.Entry(entity).State = EntityState.Modified;
+                this._unit.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {
 
-                throw Excepcion(dbEx);
-            }
-        }
-
-        public T1 GetById(string s1, string s2, string s3)
-        {
-            try
-            {
-                return this.Entity.Find(s1,s2,s3);
-            }
-            catch (DbEntityValidationException dbEx)
-            {
                 throw Excepcion(dbEx);
             }
         }

@@ -12,11 +12,13 @@ namespace medEvolution.Models.App
     [Table("Direccion")]
     public class Direccion
     {
-        public Direccion(string Col, string p_c, string casa)
+        public Direccion(string Col, string p_c, string casa, int codigoMun, int codigoDep)
         {
             Colonia = Col;
             Pasaje_Calle = p_c;
-            Casa = casa;         
+            Casa = casa;
+            CodigoMunicipio = codigoMun;
+            CodigoDepartamento = codigoDep;
         }
 
         public Direccion()
@@ -24,25 +26,27 @@ namespace medEvolution.Models.App
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DisplayName("Id")]
+        public int Id { get; set; }
+
         [Required]
-        [Column(Order = 0)]
         [StringLength(30)]
         [DisplayName("Colonia")]
         public string Colonia { get; set; }
 
-        [Key]
+
         [Required]
-        [Column(Order = 1)]
         [StringLength(30)]
         [DisplayName("Pasaje/Calle/Bloque")]
         public string Pasaje_Calle { get; set; }
 
-        [Key]
+
         [Required]
-        [Column(Order = 2)]
         [StringLength(30)]
         [DisplayName("Casa/Local")]
         public string Casa { get; set; }
+
 
         [StringLength(50)]
         [DisplayName("Detalle")]
@@ -52,8 +56,15 @@ namespace medEvolution.Models.App
         [Required]
         [DisplayName("Municipio")]
         public int CodigoMunicipio { get; set; }
+
+        [Column("Municipio_CodigoDepartamento")]
+        [Required]
+        [DisplayName("Departamento")]
+        public int CodigoDepartamento { get; set; }
+
+        [ForeignKey("CodigoMunicipio, CodigoDepartamento")]
         public virtual Municipio Municipio { get; set; }
-        
+
         //String para tener una sola linea de direccion
         [NotMapped]
         [DisplayName("Dirección")]

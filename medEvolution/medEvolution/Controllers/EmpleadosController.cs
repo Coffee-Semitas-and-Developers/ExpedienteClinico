@@ -135,7 +135,7 @@ namespace medEvolution.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica", empleado.IdClinica);
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", empleado.Colonia);
+            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", empleado.Id);
             ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad", empleado.CodigoEspecialidad);
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", empleado.CodigoEstado);
             ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto", empleado.CodigoPuesto);
