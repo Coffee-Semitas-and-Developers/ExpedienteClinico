@@ -71,40 +71,6 @@ namespace medEvolution.Models.App
         public string SelectedMunicipio { get; set; }
         public IEnumerable<SelectListItem> Municipios { get; set; }
 
-        public IEnumerable<SelectListItem> GetDepartamentos()
-        {
-            using (var context = new MedEvolutionDbContext())
-            {
-                List<SelectListItem> departamentos = context.Departamento.AsNoTracking()
-                    .OrderBy(n => n.CodigoDepartamento)
-                        .Select(n =>
-                        new SelectListItem
-                        {
-                            Value = n.CodigoDepartamento.ToString(),
-                            Text = n.NombreDep
-                        }).ToList();
-                var countrytip = new SelectListItem()
-                {
-                    Value = null,
-                    Text = "--- select country ---"
-                };
-                departamentos.Insert(0, countrytip);
-                return new SelectList(departamentos, "Value", "Text");
-            }
-        }
-
-        public IEnumerable<SelectListItem> GetMunicipios()
-        {
-            List<SelectListItem> municpios = new List<SelectListItem>()
-            {
-                new SelectListItem
-                {
-                    Value = null,
-                    Text = " "
-                }
-            };
-            return municpios;
-        }
     }
 
 }

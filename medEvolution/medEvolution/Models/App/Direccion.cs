@@ -24,41 +24,42 @@ namespace medEvolution.Models.App
         }
 
         [Key]
+        [Required]
         [Column(Order = 0)]
         [StringLength(30)]
-        [DisplayName("Colonia:")]
+        [DisplayName("Colonia")]
         public string Colonia { get; set; }
 
         [Key]
+        [Required]
         [Column(Order = 1)]
         [StringLength(30)]
-        [DisplayName("Pasaje o calle:")]
+        [DisplayName("Pasaje/Calle/Bloque")]
         public string Pasaje_Calle { get; set; }
 
         [Key]
+        [Required]
         [Column(Order = 2)]
         [StringLength(30)]
-        [DisplayName("Casa o Local:")]
+        [DisplayName("Casa/Local")]
         public string Casa { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Detalle:")]
+        [DisplayName("Detalle")]
         public string Detalle { get; set; }
 
         [Column("Municipio_CodigoMunicipio")]
-        [DisplayName("Municipio:")]
+        [Required]
+        [DisplayName("Municipio")]
         public int CodigoMunicipio { get; set; }
         public virtual Municipio Municipio { get; set; }
-
+        
         //String para tener una sola linea de direccion
         [NotMapped]
-        [DisplayName("Dirección:")]
+        [DisplayName("Dirección")]
         public string DireccionCompleta {
             get {
                 return Colonia + " " + Pasaje_Calle + " " + Casa;
-            }
-            set {
-                
             }
         }
 

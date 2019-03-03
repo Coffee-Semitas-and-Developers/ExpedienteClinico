@@ -6,17 +6,8 @@
 
 <h2>Direcciones</h2>
 
-<p>
-    @Html.ActionLink("Crear Nueva", "Create", null, new { @class = "btn btn-success" })
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Municipio.NombreMun)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Casa)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Colonia)
         </th>
@@ -24,7 +15,16 @@
             @Html.DisplayNameFor(model => model.Pasaje_Calle)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Casa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Detalle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Municipio.NombreMun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Municipio.Departamento.NombreDep)
         </th>
         <th>Opciones</th>
     </tr>
@@ -32,23 +32,25 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Municipio.NombreMun)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Casa)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Colonia)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Pasaje_Calle)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Casa)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Detalle)
         </td>
-       
         <td>
-            @Html.ActionLink(" ", "Edit", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.DisplayFor(modelItem => item.Municipio.NombreMun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Municipio.Departamento.NombreDep)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa, dep = item.Municipio.CodigoDepartamento }, htmlAttributes: new { @class = "btn btn-warning glyphicon glyphicon-pencil", @title = "Editar" }) |
             @Html.ActionLink(" ", "Details", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, htmlAttributes: new { @class = " btn btn-info glyphicon glyphicon-list", @title = "Detalles" }) |
             @Html.ActionLink(" ", "Delete", new { ColoniaID = item.Colonia, Pasaje_CalleID = item.Pasaje_Calle, CasaID = item.Casa }, htmlAttributes: new { @class = "btn btn-danger glyphicon glyphicon-trash", @title = "Eliminar" })
         </td>

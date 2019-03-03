@@ -11,16 +11,20 @@ namespace medEvolution.Services
     public class ClinicaService : IClinicaService
     {
         private readonly IRepository<Clinica> _repositoryClinica;
-        private readonly IRepository<Direccion> _repositoryDireccion;
+        private readonly IDireccionService _direccionService;
 
-        public ClinicaService(IRepository<Clinica> repositoryClinica, IRepository<Direccion> repositoryDireccion)
+        public ClinicaService(IRepository<Clinica> repositoryClinica, DireccionService direccionService)
         {
             this._repositoryClinica = repositoryClinica;
-            this._repositoryDireccion = repositoryDireccion;
+            this._direccionService = direccionService;
         }
 
         public void Delete(int id)
         {
+            var clinic = _repositoryClinica.GetById(id);
+            //var clinic = GetById(id);
+            //_direccionService.Delete(clinic.Direccion);
+            _direccionService.Delete(clinic.Colonia,clinic.Pasaje_Calle,clinic.Casa);
             _repositoryClinica.Delete(id);
             
         }

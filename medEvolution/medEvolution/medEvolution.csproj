@@ -313,6 +313,10 @@
     <Compile Include="Migrations\201812050836035_CambiarDecimalString.Designer.cs">
       <DependentUpon>201812050836035_CambiarDecimalString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902272153165_Clinica_DatabaseGeneration_To_Identity.cs" />
+    <Compile Include="Migrations\201902272153165_Clinica_DatabaseGeneration_To_Identity.Designer.cs">
+      <DependentUpon>201902272153165_Clinica_DatabaseGeneration_To_Identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -567,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812050836035_CambiarDecimalString.resx">
       <DependentUpon>201812050836035_CambiarDecimalString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902272153165_Clinica_DatabaseGeneration_To_Identity.resx">
+      <DependentUpon>201902272153165_Clinica_DatabaseGeneration_To_Identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

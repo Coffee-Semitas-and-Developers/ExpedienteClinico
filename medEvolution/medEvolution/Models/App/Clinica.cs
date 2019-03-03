@@ -17,7 +17,7 @@ namespace medEvolution.Models.App
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Sucursal:")]
         public int IdClinica { get; set; }
 
@@ -45,7 +45,7 @@ namespace medEvolution.Models.App
 
         [Required]
         [Column("Direccion_Pasaje_Calle")]
-        [DisplayName("Pasaje o Calle:")]
+        [DisplayName("Pasaje/Calle/Bloque:")]
         public string Pasaje_Calle { get; set; }
 
         [Required]

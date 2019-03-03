@@ -28,7 +28,7 @@ namespace medEvolution.Models.App
         public int CodigoDepartamento { get; set; }
 
         [Required]
-        [DisplayName("Nombre del Departamento")]
+        [DisplayName("Departamento")]
         [StringLength(30)]
         public string NombreDep { get; set; }
 

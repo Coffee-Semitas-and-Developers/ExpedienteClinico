@@ -11,6 +11,8 @@ namespace medEvolution.Services
     interface IMunicipioService
     {
         IEnumerable<Municipio> GetMunicipios();
+        Municipio GetById(int cod);
+        IEnumerable<SelectListItem> GetMunicipiosEmpty();
         IEnumerable<SelectListItem> GetMunicipiosByDepart(int cod);
     }
 }

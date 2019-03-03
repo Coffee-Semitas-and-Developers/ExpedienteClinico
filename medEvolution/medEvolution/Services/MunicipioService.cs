@@ -19,9 +19,27 @@ namespace medEvolution.Services
             this._repository = repository;
         }
 
+        public Municipio GetById(int cod)
+        {
+            return _repository.GetById(cod);
+        }
+       
+        public IEnumerable<SelectListItem> GetMunicipiosEmpty()
+        {
+            List<SelectListItem> municipios = new List<SelectListItem>()
+            {
+                new SelectListItem
+                {
+                    Value = null,
+                    Text = " "
+                }
+            };
+            return municipios;
+        }
+
         public IEnumerable<Municipio> GetMunicipios()
         {
-            return _repository.GetAll();
+           return _repository.GetAll();
         }
 
         public IEnumerable<SelectListItem> GetMunicipiosByDepart(int cod)

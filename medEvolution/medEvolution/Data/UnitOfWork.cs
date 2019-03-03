@@ -29,6 +29,12 @@ namespace medEvolution.Data
             return _context.SaveChanges();
         }
 
+        public int SaveChanges(object T1)
+        {
+            _context.Entry(T1).State = EntityState.Modified;
+            return _context.SaveChanges();
+        }
+
         public void Dispose()
         {
             _context.Dispose();

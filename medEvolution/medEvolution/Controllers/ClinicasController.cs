@@ -15,12 +15,36 @@ namespace medEvolution.Controllers
     public class ClinicasController : Controller
     {
         private readonly IClinicaService _clinicaService;
+        private readonly IDepartamentoService _departamentoService;
+        private readonly IMunicipioService _municipioService;
+        private readonly IDireccionService _direccionService;
         private MedEvolutionDbContext db = new MedEvolutionDbContext();
 
-        public ClinicasController(ClinicaService clinicaService)
+        public ClinicasController(ClinicaService clinicaService, DepartamentoService departamentoService, MunicipioService municipioService, DireccionService direccionService)
         {
             _clinicaService = clinicaService;
+            _departamentoService = departamentoService;
+            _municipioService = municipioService;
+            _direccionService = direccionService;
         }
+
+
+        /// <summary>
+        /// Permite obtener el listado de municipios correspodientes a cada 
+        /// departamento. Mediante JavaScript y Json
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <returns></returns>
+        /*[HttpGet]
+        public ActionResult GetMunicipios(int cod)
+        {
+            if (cod != 0)
+            {
+                IEnumerable<SelectListItem> municipios = _municipioService.GetMunicipiosByDepart(cod);
+                return Json(municipios, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }*/
 
         // GET: Clinicas
         public ActionResult Index()
@@ -47,9 +71,8 @@ namespace medEvolution.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia");
-            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle");
-            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa");
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipios();
             return View();
         }
 
@@ -58,18 +81,17 @@ namespace medEvolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdClinica,NombreClinica,Telefono,FechaApertura,Colonia,Pasaje_Calle,Casa")] Clinica clinica)
+        public ActionResult Create([Bind(Include = "NombreClinica,Telefono,Colonia,Pasaje_Calle,Casa")] Clinica clinica)
         {
             if (ModelState.IsValid)
             {
-                db.Clinica.Add(clinica);
-                db.SaveChanges();
+                _direccionService.Insert( new Direccion());
+                _clinicaService.Insert(clinica);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia");
-            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle");
-            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa");
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipios();
             return View(clinica);
         }
 
@@ -80,14 +102,13 @@ namespace medEvolution.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clinica clinica = db.Clinica.Find(id);
+            Clinica clinica = _clinicaService.GetById(id.Value);
             if (clinica == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia");
-            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle");
-            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa");
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipios();
             return View(clinica);
         }
 
@@ -119,9 +140,9 @@ namespace medEvolution.Controllers
         // POST: Clinicas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            _clinicaService.Delete(id);
+            _clinicaService.Delete(id.Value);
             return RedirectToAction("Index");
         }
 

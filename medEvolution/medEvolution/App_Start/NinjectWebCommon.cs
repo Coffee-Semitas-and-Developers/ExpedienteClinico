@@ -68,6 +68,8 @@ namespace medEvolution.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>)).InRequestScope();
             kernel.Bind<IClinicaService>().To<ClinicaService>();
             kernel.Bind<IDireccionService>().To<DireccionService>();
+            kernel.Bind<IMunicipioService>().To<MunicipioService>();
+            kernel.Bind<IDepartamentoService>().To<DepartamentoService>();
             //kernel.Bind<>().To<>();
         }
     }

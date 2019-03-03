@@ -17,8 +17,9 @@ namespace medEvolution.Controllers
         private IEmpleadoService _empleadoService;
         private readonly MedEvolutionDbContext db = new MedEvolutionDbContext();
 
-        public EmpleadosController(MunicipioService municipioService)
+        public EmpleadosController(EmpleadoService empleadoService, MunicipioService municipioService)
         {
+            this._empleadoService = empleadoService;
             this._municipioService = municipioService;
         }
 

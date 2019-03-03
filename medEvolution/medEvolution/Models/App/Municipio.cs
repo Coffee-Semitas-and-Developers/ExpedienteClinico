@@ -21,7 +21,7 @@ namespace medEvolution.Models.App
         public int CodigoMunicipio { get; set; }
 
         [Required]
-        [DisplayName("Nombre de Municipio")]
+        [DisplayName("Municipio")]
         [StringLength(30)]
         public string NombreMun { get; set; }
 

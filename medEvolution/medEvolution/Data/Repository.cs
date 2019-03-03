@@ -33,6 +33,14 @@ namespace medEvolution.Data
             }
         }
 
+        public virtual IQueryable<T1> Table
+        {
+            get
+            {
+                return this.Entity;
+            }
+        }
+
         public Repository(UnitOfWork unit)
         {
             this._unit =unit;
@@ -43,6 +51,23 @@ namespace medEvolution.Data
             try
             {
                 T1 ent = this.Entity.Find(id);
+                if (ent == null)
+                {
+                    throw new ArgumentNullException("Entity cannot be found");
+                }
+                this.Entity.Remove(ent);
+                this._unit.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw Excepcion(dbEx);
+            }
+        }
+
+        public void Delete(T1 ent)
+        {
+            try
+            {
                 if (ent == null)
                 {
                     throw new ArgumentNullException("Entity cannot be found");
@@ -107,8 +132,8 @@ namespace medEvolution.Data
                 {
                     throw new ArgumentNullException("entity");
                 }
-                this._unit._context.Entry(entity).State = EntityState.Modified;
-                this._unit.SaveChanges();
+                //this._unit._context.Entry(entity).State = EntityState.Modified;
+                this._unit.SaveChanges(entity);
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -117,7 +142,7 @@ namespace medEvolution.Data
             }
         }
 
-        public T1 GetbyId(string s1, string s2, string s3)
+        public T1 GetById(string s1, string s2, string s3)
         {
             try
             {

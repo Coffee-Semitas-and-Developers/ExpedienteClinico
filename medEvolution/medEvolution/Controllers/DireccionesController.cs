@@ -1,9 +1,12 @@
 ﻿using medEvolution.DAL;
 using medEvolution.Models.App;
+using medEvolution.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,90 +14,119 @@ namespace medEvolution.Controllers
 {
     public class DireccionesController : Controller
     {
-        private IDireccionRepository _direccionRepository;
-        private MedEvolutionDbContext db = new MedEvolutionDbContext();
+        private IDireccionService _direccionService;
+        private readonly IMunicipioService _municipioService;
+        private readonly IDepartamentoService _departamentoService;
 
-        public DireccionesController()
+        public DireccionesController(DireccionService direccionService, MunicipioService municipioService, DepartamentoService departamentoService)
         {
-            this._direccionRepository = new DireccionRepository(new MedEvolutionDbContext());
+            this._departamentoService = departamentoService;
+            this._municipioService = municipioService;
+            this._direccionService = direccionService;
         }
 
+        [HttpGet]
+        public ActionResult GetMunicipios(int? cod)
+        {
+            if (cod != 0)
+            {
+                IEnumerable<SelectListItem> municipios = _municipioService.GetMunicipiosByDepart(cod.Value);
+                return Json(municipios, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
 
         // GET: Direcciones
         public ActionResult Index()
         {
-            var direcciones = from direccion in _direccionRepository.GetDirecciones()
-                              select direccion;
-            return View(direcciones);
+            return View(_direccionService.GetAll());
         }
 
         public ActionResult Details(string ColoniaID, string Pasaje_CalleID, string CasaID)
         {
-            Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
+            if (ColoniaID == null && Pasaje_CalleID== null && CasaID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Direccion direccion = _direccionService.GetById(ColoniaID, Pasaje_CalleID, CasaID);
+            if (direccion == null)
+            {
+                return HttpNotFound();
+            }
             return View(direccion);
         }
 
         public ActionResult Create()//GET
         {
-            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun");
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipiosEmpty();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Direccion direccion)//POST
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio")] Direccion direccion)//POST
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _direccionRepository.InsertDireccion(direccion);
-                    _direccionRepository.Save();
+                    _direccionService.Insert(direccion);
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException)
+            catch (DbEntityValidationException ex)
             {
-                ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
+                ModelState.AddModelError(ex.Data.ToString(), ex.Message);
             }
-            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipiosEmpty();
             return View(direccion);
         }
 
-        public ActionResult Edit(string ColoniaID, string Pasaje_CalleID, string CasaID)//GET
+        [HttpGet]
+        public ActionResult Edit(string ColoniaID, string Pasaje_CalleID, string CasaID, int? dep)//GET
         {
-            Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
-            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
+            if (ColoniaID == null && Pasaje_CalleID == null && CasaID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Direccion direccion = _direccionService.GetById(ColoniaID, Pasaje_CalleID, CasaID);
+            if (direccion == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SelectedDepartamento = dep.Value;
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipiosByDepart(direccion.Municipio.CodigoDepartamento);
             return View(direccion);
         }
 
         [HttpPost]
-        public ActionResult Edit(Direccion direccion)//POST
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio")]Direccion direccion)//POST
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _direccionRepository.UpdateDireccion(direccion);
-                    _direccionRepository.Save();
+                    _direccionService.Update(direccion);
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException)
+            catch (DbEntityValidationException ex)
             {
-                ModelState.AddModelError("", "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
+                ModelState.AddModelError(ex.Data.ToString(), "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador");
             }
-            ViewBag.codigoMunicipio = new SelectList(db.Municipio, "CodigoMunicipio", "NombreMun", direccion.CodigoMunicipio);
+            ViewBag.SelectedDepartamento = _municipioService.GetCodDepartamento(direccion.CodigoMunicipio);
+            ViewBag.Departamento = _departamentoService.GetDepartamentos();
+            ViewBag.Municipio = _municipioService.GetMunicipiosEmpty();
             return View(direccion);
         }
 
-        public ActionResult Delete(string ColoniaID, string Pasaje_CalleID, string CasaID, bool? saveChangesError)
+        public ActionResult Delete(string ColoniaID, string Pasaje_CalleID, string CasaID)
         {
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ViewBag.ErrorMessage = "No ha sido capaz de guardar los cambios. Prueba de nuevo, y si los problemas persisten habla con el administrador";
-            }
-            Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
-            return View(direccion);
+            return Details(ColoniaID, Pasaje_CalleID, CasaID);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -102,9 +134,7 @@ namespace medEvolution.Controllers
         {
             try
             {
-                Direccion direccion = _direccionRepository.GetDireccionByID(ColoniaID, Pasaje_CalleID, CasaID);
-                _direccionRepository.DeleteDireccion(ColoniaID, Pasaje_CalleID, CasaID);
-                _direccionRepository.Save();
+                _direccionService.Delete(_direccionService.GetById(ColoniaID,Pasaje_CalleID,CasaID));
             }
             catch (DataException)
             {

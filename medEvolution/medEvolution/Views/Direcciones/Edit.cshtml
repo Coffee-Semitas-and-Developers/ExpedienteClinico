@@ -6,33 +6,56 @@
 
 <h2>Editar</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Direcciones", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <h4>Direccion</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Colonia)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Colonia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Colonia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Colonia, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        @Html.HiddenFor(model => model.Pasaje_Calle)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pasaje_Calle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Pasaje_Calle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Pasaje_Calle, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        @Html.HiddenFor(model => model.Casa)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Casa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Casa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Casa, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodigoMunicipio, "CodigoMunicipio", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Municipio.Departamento, "Departamento", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("codigoMunicipio", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Departamento", new SelectList(ViewBag.Departamento, "CodigoDepartamento", "NombreDep", ViewBag.SelectedDepartamento), htmlAttributes: new { @class = "form-control", @id = "Departamento" })
+                @Html.ValidationMessageFor(model => model.Municipio.Departamento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CodigoMunicipio, "Municipio", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CodigoMunicipio, new SelectList(ViewBag.Municipio, "Value", "Text", Model.CodigoMunicipio), htmlAttributes: new { @class = "form-control", @id = "Municipio" })
                 @Html.ValidationMessageFor(model => model.CodigoMunicipio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,4 +74,28 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+            $('#Departamento').change(function () {
+                var selectedDepartamento = $("#Departamento").val();
+                var municipiosSelect = $('#Municipio');
+                municipiosSelect.empty();
+                if (selectedDepartamento != null && selectedDepartamento != '') {
+                    $.getJSON('@Url.Action("GetMunicipios")', { cod: selectedDepartamento }, function (municipios) {
+                        if (municipios != null && !jQuery.isEmptyObject(municipios))
+                        {
+                            municipiosSelect.append($('<option/>', {
+                                value: null,
+                                text: "--Seleccione el Municipio--"
+                            }));
+                            $.each(municipios, function (index, municipio) {
+                                municipiosSelect.append($('<option/>', {
+                                    value: municipio.Value,
+                                    text: municipio.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+            });
+    </script>
 }

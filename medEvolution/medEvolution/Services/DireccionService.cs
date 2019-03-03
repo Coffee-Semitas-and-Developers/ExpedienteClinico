@@ -19,7 +19,12 @@ namespace medEvolution.Services
 
         public void Delete(string Colonia, string Pasaje_Calle, string Casa)
         {
-            var dir = GetById(Colonia,Pasaje_Calle,Casa);
+            Direccion dir = _repository.GetById(Colonia,Pasaje_Calle,Casa);
+            _repository.Delete(dir);
+        }
+
+        public void Delete(Direccion dir)
+        {
             _repository.Delete(dir);
         }
 
@@ -30,9 +35,7 @@ namespace medEvolution.Services
 
         public Direccion GetById(string Colonia, string Pasaje_Calle, string Casa)
         {
-            var dir = new Direccion(Colonia, Pasaje_Calle,Casa);
-            return _repository.GetById(dir);
-            //return _repository.GetbyId(Colonia, Pasaje_Calle, Casa);
+            return _repository.GetById(Colonia, Pasaje_Calle, Casa);
         }
 
         public void Insert(Direccion entity)

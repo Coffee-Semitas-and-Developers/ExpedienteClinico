@@ -1,20 +1,16 @@
 ﻿@model medEvolution.Models.App.Direccion
 
 @{
-    ViewBag.Title = "Crear";
+    ViewBag.Title = "Create";
 }
 
-<h2>Nuevo</h2>
-
-
-@using (Html.BeginForm())
+<h2>Nueva</h2>
+@using (Html.BeginForm("Create", "Direcciones", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <h4>Direccion</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Colonia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -42,31 +38,63 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodigoMunicipio, "CodigoMunicipio", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Municipio.Departamento, "Departamento", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("codigoMunicipio", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Municipio.Departamento, new SelectList(ViewBag.Departamento, "CodigoDepartamento", "NombreDep"), htmlAttributes: new { @class = "form-control", @id = "Departamento" })
+                @Html.ValidationMessageFor(model => model.Municipio.Departamento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CodigoMunicipio, "Municipio", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CodigoMunicipio, new SelectList(ViewBag.Municipio, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "Municipio" })
                 @Html.ValidationMessageFor(model => model.CodigoMunicipio, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-success" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
-}
+ }
 
     <div>
         @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
     </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/javascript">
+            $('#Departamento').change(function () {
+                var selectedDepartamento = $("#Departamento").val();
+                var municipiosSelect = $('#Municipio');
+                municipiosSelect.empty();
+                if (selectedDepartamento != null && selectedDepartamento != '') {
+                    $.getJSON('@Url.Action("GetMunicipios")', { cod: selectedDepartamento }, function (municipios) {
+                        if (municipios != null && !jQuery.isEmptyObject(municipios))
+                        {
+                            municipiosSelect.append($('<option/>', {
+                                value: null,
+                                text: "--Seleccione el Municipio--"
+                            }));
+                            $.each(municipios, function (index, municipio) {
+                                municipiosSelect.append($('<option/>', {
+                                    value: municipio.Value,
+                                    text: municipio.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+            });
+        </script>
+    }

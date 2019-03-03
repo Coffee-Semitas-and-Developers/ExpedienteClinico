@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Municipio.NombreMun)
+            @Html.DisplayNameFor(model => model.DireccionCompleta)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Municipio.NombreMun)
+            @Html.DisplayFor(model => model.DireccionCompleta)
         </dd>
 
         <dt>
@@ -24,6 +24,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.Detalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipio.NombreMun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipio.NombreMun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipio.Departamento.NombreDep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipio.Departamento.NombreDep)
         </dd>
 
     </dl>

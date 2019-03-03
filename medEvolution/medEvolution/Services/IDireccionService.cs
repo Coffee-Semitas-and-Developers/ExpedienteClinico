@@ -14,5 +14,6 @@ namespace medEvolution.Services
         void Insert(Direccion entity);
         void Update(Direccion entity);
         void Delete(string Colonia, string Pasaje_Calle, string Casa);
+        void Delete(Direccion dir);
     }
 }
