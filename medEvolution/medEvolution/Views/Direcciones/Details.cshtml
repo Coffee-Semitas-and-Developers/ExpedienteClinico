@@ -46,7 +46,7 @@
 
 <p>
     @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-step-backward", @title = "Regresar" })
-    @Html.ActionLink(" ", "Edit", new { ColoniaID = Model.Colonia, Pasaje_CalleID = Model.Pasaje_Calle, CasaID = Model.Casa }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil btn btn-warning", @title = "Editar" })
+    @Html.ActionLink(" ", "Edit", new { id = Model.Id }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil btn btn-warning", @title = "Editar" })
 </p>
 
 
