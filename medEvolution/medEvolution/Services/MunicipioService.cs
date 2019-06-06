@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace medEvolution.Services
 {
@@ -45,23 +46,31 @@ namespace medEvolution.Services
 
         public IEnumerable<SelectListItem> GetMunicipiosByDepart(int cod)
         {
-            if (cod != 0)
+            try
             {
-                using (var context = _unit._context)
+                if (cod != 0)
                 {
-                    IEnumerable<SelectListItem> municipios = context.Municipio.AsNoTracking()
-                           .OrderBy(n => n.CodigoDepartamento)
-                           .Where(n => n.CodigoDepartamento == cod)
-                           .Select(n =>
-                              new SelectListItem
-                              {
-                                  Value = n.CodigoMunicipio.ToString(),
-                                  Text = n.NombreMun
-                              }).ToList();
-                    return new SelectList(municipios, "Value", "Text");
+                    using (var context = _unit._context)
+                    {
+                        IEnumerable<SelectListItem> municipios = context.Municipio.AsNoTracking()
+                               .OrderBy(n => n.CodigoDepartamento)
+                               .Where(n => n.CodigoDepartamento == cod)
+                               .Select(n =>
+                                  new SelectListItem
+                                  {
+                                      Value = n.CodigoMunicipio.ToString(),
+                                      Text = n.NombreMun
+                                  }).ToList();
+                        return new SelectList(municipios, "Value", "Text");
+                    }
                 }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
     }
 }

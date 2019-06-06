@@ -137,8 +137,9 @@ namespace medEvolution.Models.App
         [Required]
         [Column("Direccion_Id")]
         [DisplayName("Dirección")]
-        public int Id { get; set; }
+        public int Direccion_Id { get; set; }
 
+        [ForeignKey("Direccion_Id")]
         public virtual Direccion Direccion { get; set; }
 
         [NotMapped]

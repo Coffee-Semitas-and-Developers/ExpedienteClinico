@@ -18,7 +18,8 @@ namespace medEvolution.Controllers
         private readonly IDepartamentoService _departamentoService;
         private readonly IMunicipioService _municipioService;
         private readonly IDireccionService _direccionService;
-        private MedEvolutionDbContext db = new MedEvolutionDbContext();
+        private DireccionesController DireccionesController;
+        
 
         public ClinicasController(ClinicaService clinicaService, DepartamentoService departamentoService, MunicipioService municipioService, DireccionService direccionService)
         {
@@ -26,6 +27,7 @@ namespace medEvolution.Controllers
             _departamentoService = departamentoService;
             _municipioService = municipioService;
             _direccionService = direccionService;
+            DireccionesController = new DireccionesController(direccionService, municipioService, departamentoService);
         }
 
 
@@ -35,7 +37,7 @@ namespace medEvolution.Controllers
         /// </summary>
         /// <param name="cod"></param>
         /// <returns></returns>
-        /*[HttpGet]
+        [HttpGet]
         public ActionResult GetMunicipios(int cod)
         {
             if (cod != 0)
@@ -44,7 +46,7 @@ namespace medEvolution.Controllers
                 return Json(municipios, JsonRequestBehavior.AllowGet);
             }
             return null;
-        }*/
+        }
 
         // GET: Clinicas
         public ActionResult Index()
@@ -71,9 +73,15 @@ namespace medEvolution.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+             return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult CreateAddress()//GET
+        {
             ViewBag.Departamento = _departamentoService.GetDepartamentos();
-            ViewBag.Municipio = _municipioService.GetMunicipios();
-            return View();
+            ViewBag.Municipio = _municipioService.GetMunicipiosEmpty();
+            return PartialView("CreateAddress");
         }
 
         // POST: Clinicas/Create
@@ -81,11 +89,10 @@ namespace medEvolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NombreClinica,Telefono,Colonia,Pasaje_Calle,Casa")] Clinica clinica)
+        public ActionResult Create([Bind(Include = "NombreClinica,Telefono,Direccion")] Clinica clinica)
         {
             if (ModelState.IsValid)
             {
-                _direccionService.Insert( new Direccion());
                 _clinicaService.Insert(clinica);
                 return RedirectToAction("Index");
             }
@@ -117,17 +124,12 @@ namespace medEvolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdClinica,NombreClinica,Telefono,FechaApertura,Colonia,Pasaje_Calle,Casa")] Clinica clinica)
+        public ActionResult Edit([Bind(Include = "NombreClinica,Telefono,FechaApertura,Colonia,Pasaje_Calle,Casa")] Clinica clinica)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(clinica).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Colonia");
-            ViewBag.Pasaje_calle = new SelectList(db.Direccion, "Pasaje_Calle", "Pasaje_calle");
-            ViewBag.Casa = new SelectList(db.Direccion, "Casa", "Casa");
             return View(clinica);
         }
 

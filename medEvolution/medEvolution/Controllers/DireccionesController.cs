@@ -56,16 +56,16 @@ namespace medEvolution.Controllers
             return View(direccion);
         }
 
-        public ActionResult Create()//GET
+        public ActionResult CreateAddress()//GET
         {
             ViewBag.Departamento = _departamentoService.GetDepartamentos();
             ViewBag.Municipio = _municipioService.GetMunicipiosEmpty();
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio,CodigoDepartamento")] Direccion direccion)//POST
+        public ActionResult CreateAddress([Bind(Include = "Colonia,Pasaje_Calle,Casa,Detalle,CodigoMunicipio,CodigoDepartamento")] Direccion direccion)//POST
         {
             try
             {

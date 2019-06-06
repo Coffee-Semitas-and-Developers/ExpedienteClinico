@@ -26,8 +26,9 @@ namespace medEvolution.Controllers
         // GET: Empleados
         public ActionResult Index()
         {
-            var empleado = db.Empleado.Include(e => e.Clinica).Include(e => e.Direccion).Include(e => e.Especialidad_Desempeniada).Include(e => e.Estado).Include(e => e.Puesto);
-            return View(empleado.ToList());
+            //var empleado = db.Empleado.Include(e => e.Clinica).Include(e => e.Direccion).Include(e => e.Especialidad_Desempeniada).Include(e => e.Estado).Include(e => e.Puesto);
+            //return View(empleado.ToList());
+            return null;
         }
 
         [HttpGet]
@@ -135,7 +136,7 @@ namespace medEvolution.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdClinica = new SelectList(db.Clinica, "IdClinica", "NombreClinica", empleado.IdClinica);
-            ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", empleado.Id);
+            //ViewBag.Colonia = new SelectList(db.Direccion, "Colonia", "Detalle", empleado.Direccion_Id);
             ViewBag.CodigoEspecialidad = new SelectList(db.Especialidad_Desempeniada, "CodigoEspecialidad", "NombreEspecialidad", empleado.CodigoEspecialidad);
             ViewBag.CodigoEstado = new SelectList(db.Estado, "CodigoEstado", "NombreEstado", empleado.CodigoEstado);
             ViewBag.CodigoPuesto = new SelectList(db.PuestoDeTrabajo, "CodigoPuesto", "NombrePuesto", empleado.CodigoPuesto);

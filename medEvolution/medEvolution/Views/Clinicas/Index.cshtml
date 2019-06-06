@@ -10,22 +10,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdClinica)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.NombreClinica)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Telefono)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Colonia)
+            @Html.DisplayNameFor(model => model.Direccion.DireccionCompleta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pasaje_Calle)
+            @Html.DisplayNameFor(model => model.Direccion.Municipio.NombreMun)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Casa)
+            @Html.DisplayNameFor(model => model.Direccion.Municipio.Departamento.NombreDep)
         </th>
         <th></th>
     </tr>
@@ -33,22 +30,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.IdClinica)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.NombreClinica)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Telefono)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Colonia)
+            @Html.DisplayFor(modelItem => item.Direccion.DireccionCompleta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pasaje_Calle)
+            @Html.DisplayFor(modelItem => item.Direccion.Municipio.NombreMun)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Casa)
+            @Html.DisplayFor(modelItem => item.Direccion.Municipio.Departamento.NombreDep)
         </td>
 
         <td>

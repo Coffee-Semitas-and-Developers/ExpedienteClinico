@@ -26,6 +26,7 @@ namespace medEvolution.Models.App
         }
 
         [Key]
+        [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Id")]
         public int Id { get; set; }
@@ -67,6 +68,7 @@ namespace medEvolution.Models.App
 
         //String para tener una sola linea de direccion
         [NotMapped]
+        [ScaffoldColumn(false)]
         [DisplayName("Dirección")]
         public string DireccionCompleta {
             get {

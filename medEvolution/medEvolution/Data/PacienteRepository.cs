@@ -21,7 +21,8 @@ namespace medEvolution.DAL
         public IEnumerable<Paciente> GetPacientes()
         {
             //return _context.Direcciones.ToList();
-            return _context.Paciente.Include(p => p.Direccion).Include(p => p.Estado);
+            //return _context.Paciente.Include(p => p.Direccion).Include(p => p.Estado);
+            return null;
         }
 
         public Paciente GetPacienteByID(int? IdPaciente)

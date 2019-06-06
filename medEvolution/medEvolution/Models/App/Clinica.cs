@@ -18,19 +18,19 @@ namespace medEvolution.Models.App
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [DisplayName("Sucursal:")]
+        [DisplayName("Clínica N°")]
         public int IdClinica { get; set; }
 
         [Required]
         [StringLength(30)]
-        [DisplayName("Nombre de la clínica:")]
+        [DisplayName("Sucursal")]
         //[RegularExpression("^[^-][0-9]$")]
         public string NombreClinica { get; set; }
 
         [Required]
         [StringLength(10)]
         //[RegularExpression()]
-        [DisplayName("Teléfono:")]
+        [DisplayName("Teléfono")]
         public string Telefono { get; set; }
 
         [Required]
@@ -41,8 +41,9 @@ namespace medEvolution.Models.App
         [Required]
         [Column("Direccion_Id")]
         [DisplayName("Dirección")]
-        public int Id { get; set; }
+        public int Direccion_Id { get; set; }
 
+        [ForeignKey("Direccion_Id")]
         public virtual Direccion Direccion { get; set; }
 
         public virtual ICollection<Empleado> Empleados { get; set; }

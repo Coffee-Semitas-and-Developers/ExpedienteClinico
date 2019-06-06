@@ -321,6 +321,14 @@
     <Compile Include="Migrations\201903032212256_Modificacio_Modelo-Direccion.Designer.cs">
       <DependentUpon>201903032212256_Modificacio_Modelo-Direccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903042210218_Correcion-BaseDeDatos-DireccionYRelaciones.cs" />
+    <Compile Include="Migrations\201903042210218_Correcion-BaseDeDatos-DireccionYRelaciones.Designer.cs">
+      <DependentUpon>201903042210218_Correcion-BaseDeDatos-DireccionYRelaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903042217535_Correcion-BaseDeDatos-DireccionYRelaciones-Adición.cs" />
+    <Compile Include="Migrations\201903042217535_Correcion-BaseDeDatos-DireccionYRelaciones-Adición.Designer.cs">
+      <DependentUpon>201903042217535_Correcion-BaseDeDatos-DireccionYRelaciones-Adición.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Users\AccountViewModels.cs" />
     <Compile Include="Models\App\Cita.cs" />
@@ -465,7 +473,7 @@
     <Content Include="Views\Citas\Edit.cshtml" />
     <Content Include="Views\Direcciones\Index.cshtml" />
     <Content Include="Views\Direcciones\Details.cshtml" />
-    <Content Include="Views\Direcciones\Create.cshtml" />
+    <Content Include="Views\Direcciones\CreateAddress.cshtml" />
     <Content Include="Views\Direcciones\Edit.cshtml" />
     <Content Include="Views\Direcciones\Delete.cshtml" />
     <Content Include="Views\Pacientes\Create.cshtml" />
@@ -512,6 +520,7 @@
     <Content Include="Views\ConjuntoSignosVitales\Details.cshtml" />
     <Content Include="Views\ConjuntoSignosVitales\Edit.cshtml" />
     <Content Include="Views\ConjuntoSignosVitales\Index.cshtml" />
+    <Content Include="Views\Clinicas\CreateAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -581,6 +590,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903032212256_Modificacio_Modelo-Direccion.resx">
       <DependentUpon>201903032212256_Modificacio_Modelo-Direccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903042210218_Correcion-BaseDeDatos-DireccionYRelaciones.resx">
+      <DependentUpon>201903042210218_Correcion-BaseDeDatos-DireccionYRelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903042217535_Correcion-BaseDeDatos-DireccionYRelaciones-Adición.resx">
+      <DependentUpon>201903042217535_Correcion-BaseDeDatos-DireccionYRelaciones-Adición.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
